@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	  <title>Jamdancedaddymovemomma</title>
+	  <%= stylesheet_link_tag    "application", :media => "all" %>
+	  <%= javascript_include_tag "application" %>
+	  <%= csrf_meta_tags %>
+	</head>
+	<body>
+		<div class="container">
+			<div class="centerofpage" style="width:349px">
+				<%= image_tag "logo.png" %>
+			</div>
+
+			<%= yield %>
+
+			<div class="content bgcolorpink fltleft">
+				<%= yield :left_side %>
+			</div>
+
+			<div class="content bgcolorblue fltright">
+				<%= yield :right_side %>
+			</div>
+		</div>
+
+		<div style="clear:both"></div>
+
+		<div style="height:150px; background-color:Black">
+			Footer
+		</div>
+	</body>
+</html>

@@ -1,0 +1,30 @@
+body
+{margin:0px;}
+.container
+{float:left;width:100%;position:relative;}
+.content
+{width:50%;  height:800px; text-align: center}
+.fltleft
+{float:left;}
+.fltright
+{float:right;}
+.videoframe
+{width:307px; height:307px; text-align:center;}
+.videoframe img
+{padding-top:19px}
+.bgcolororange
+{background-color:#f2944f;}
+.bgcolorgreen
+{background-color:#4ff28c;}
+.bgcolorblue
+{background-color:#db438f;}
+.bgcolorpink
+{background-color:#12ceda;}
+.shadowblue
+{box-shadow: 10px 10px 0px #0faab4;}
+.shadowpink
+{box-shadow: 10px 10px 0px #b53776;}
+#or
+{margin-top: -311px; float:right; margin-left:30px;}
+.centerofpage
+{position:absolute; margin-left: auto;margin-right: auto;left: 0;right: 0;}
