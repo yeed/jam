@@ -16,15 +16,37 @@ body
 {background-color:#f2944f;}
 .bgcolorgreen
 {background-color:#4ff28c;}
-.bgcolorblue
-{background-color:#db438f;}
 .bgcolorpink
+{background-color:#db438f;}
+.bgcolorblue
 {background-color:#12ceda;}
+.bgcolordarkblue
+{background-color:#3072c4;}
 .shadowblue
 {box-shadow: 10px 10px 0px #0faab4;}
 .shadowpink
 {box-shadow: 10px 10px 0px #b53776;}
+.shadow
+{box-shadow: 10px 10px 0px rgba(128, 128, 128, 0.41)}
+.shadowsmall
+{box-shadow: 5px 5px 0px rgba(128, 128, 128, 0.41)}
 #or
 {margin-top: -311px; float:right; margin-left:30px;}
 .centerofpage
 {position:absolute; margin-left: auto;margin-right: auto;left: 0;right: 0;}
+.youpassbtn
+{width: 255px;height: 74px;margin-top: 47px;margin-left: 32px;cursor: pointer;}
+.shopbtn
+{float:left;width:215px;cursor:pointer;}
+.facebookbtn
+{float:right;width:215px;cursor:pointer;}
+.footercontainer
+{width:1200px; margin:auto; padding-top:53px}
+.footer
+{height:150px; background-color:Black}
+.smallvideoframe
+{width:188px; height:234px; text-align:center;float:left;}
+.smallvideoframe img
+{padding-top:4px}
+.videoholder
+{margin-left:15px}

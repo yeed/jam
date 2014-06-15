@@ -7,6 +7,8 @@
 	  <%= csrf_meta_tags %>
 	</head>
 	<body>
+
+		<%= @test %>
 		<div class="container">
 			<div class="centerofpage" style="width:349px">
 				<%= image_tag "logo.png" %>
@@ -14,19 +16,26 @@
 
 			<%= yield %>
 
-			<div class="content bgcolorpink fltleft">
+			<div class="content bgcolor<%= @leftsidebgcolor %> fltleft">
 				<%= yield :left_side %>
 			</div>
 
-			<div class="content bgcolorblue fltright">
+			<div class="content bgcolor<%= @rightsidebgcolor %> fltright">
 				<%= yield :right_side %>
 			</div>
 		</div>
 
 		<div style="clear:both"></div>
 
-		<div style="height:150px; background-color:Black">
-			Footer
+		<div class="footer">
+			<div class="footercontainer">
+				<div class="shopbtn">
+					<%= image_tag "shopproducts.png" %>
+				</div>
+				<div class="facebookbtn">
+					<%= image_tag "facebookbtn.png" %>
+				</div>
+			</div>
 		</div>
 	</body>
 </html>
