@@ -8,15 +8,25 @@ class HomeController < ApplicationController
 	def index
 		@leftsidebgcolor = "blue"
 		@rightsidebgcolor = "pink"
+
+		offset = rand(Video.count)
+		offset2 = rand(Video.count)
+
+		while offset == offset2
+			offset2 = rand(Video.count)
+		end
+
+		@firstvideo = Video.first(:offset => offset)
+		@secondvideo = Video.first(:offset => offset2)
+
 	end
 
 	def initvideos
-
 		require "net/https"
 		require "uri"
 		require 'json'
 
-		uri = URI.parse("https://api.instagram.com/v1/users/201508105/media/recent?access_token=201508105.1fb234f.23f267ecdf4d409980c2d4163a3e3b4e")
+		uri = URI.parse("https://api.instagram.com/v1/tags/dance/media/recent?access_token=201508105.1fb234f.23f267ecdf4d409980c2d4163a3e3b4e&max_tag_id=1402827536318607")
 		http = Net::HTTP.new(uri.host, uri.port)
 		http.use_ssl = true
 		http.verify_mode = OpenSSL::SSL::VERIFY_NONE
@@ -33,39 +43,43 @@ class HomeController < ApplicationController
 
 		hash['data'].each do |child|
 
-			if Video.exists?(:video_id => child['id'])
-				@text << "Video Kaydedilmis :(\n"
-			else
-				@text << "Video Kaydedilecek!\n"
-			
-				@videoname = child['caption']['text']
-				@videoid = child['id']
-				@videourl = child['videos']['standard_resolution']['url']
-				@imageurl = child['images']['standard_resolution']['url']
+			if child['type'] == "video"
+				if Video.exists?(:video_id => child['id'])
+					@text << "Video Kaydedilmis :(\n\n"
+				else
+					unless child['caption'].nil?
 
-				@text << 'Video Ismi: ' << @videoname << "\n"
-				@text << 'Video Url: ' << @videourl << "\n"
-				@text << 'Video Image Url: ' << @imageurl << "\n"
-				@text << 'Video ID: ' << @videoid << "\n\n\n"
+						@text << "Video Kaydedilecek!\n\n"
 
-  	
-				@video = Video.new
+						@videoid = child['id']
+						@videoname = child['caption']['text']
+						@videourl = child['videos']['standard_resolution']['url']
+						@imageurl = child['images']['standard_resolution']['url']
+						@username = child['user']['username']
 
-				@video.name = @videoname
-				@video.description = @videoname
-				@video.url = @videourl
-				@video.thumbnail_image_url = @imageurl
-				@video.video_id = @videoid
+						@text << 'Video Ismi: ' << @videoname << "\n"
+						@text << 'Video Url: ' << @videourl << "\n"
+						@text << 'Video Image Url: ' << @imageurl << "\n"
+						@text << 'Video ID: ' << @videoid << "\n"
+						@text << 'User Name: ' << @username << "\n"
+		  	
+						@video = Video.new
 
-				@video.save
+						@video.name = @username
+						@video.description = @videoname
+						@video.url = @videourl
+						@video.thumbnail_image_url = @imageurl
+						@video.video_id = @videoid
+
+						@video.save
+					else
+						@text << "Video has null fields!\n\n"
+				  		next
+					end
+				end
 			end
-		
-			/@text << child['videos']['low_bandwidth']['url']/
 		end
-
-
 	end
-
 end
 
 

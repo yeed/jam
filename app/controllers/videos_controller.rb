@@ -3,7 +3,13 @@ class VideosController < ApplicationController
 		@leftsidebgcolor = "orange"
 		@rightsidebgcolor = "pink"
 
-		@videos = Video.all
+		if request.original_url.include? "pop"
+			videos = Video.order("videos.view_count DESC")
+		else
+			videos = Video.order("videos.created_at DESC")
+		end
+
+		@videos = videos
 	end
 
 

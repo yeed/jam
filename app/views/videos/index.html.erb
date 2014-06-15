@@ -13,4 +13,68 @@
 
 </div>
 
+		    	
+<% content_for :left_side do %>
 
+	<div class="sliderholder">
+		<%= image_tag "slidepick.png", :id => "viewcontrol" %>
+	</div>
+
+	<script type="text/javascript">
+		$(function() {
+		    $( "#viewcontrol" ).draggable(
+		    	{ 
+		    		axis: "x", 
+		    		grid: [ 200, 0 ], 
+		    		containment: "parent",
+		    		stop: function() 
+		    		{
+		    			var position = $('#viewcontrol').css('left');
+				        
+				        if (position == "-100px")
+				        	location = "./";
+			      	}
+		    	});
+		});
+
+		$('#viewcontrol').css('left', '100px')
+	</script>
+
+<% end %>
+
+
+<% content_for :right_side do %>
+
+	<div class="sliderholderright">
+		<%= image_tag "slidepick.png", :id => "videocontrol" %>
+	</div>
+
+	<script type="text/javascript">
+		$(function() {
+		    $( "#videocontrol" ).draggable(
+		    	{ 
+		    		axis: "x", 
+		    		grid: [ 200, 0 ], 
+		    		containment: "parent",
+		    		stop: function() 
+		    		{
+		    			var position = $('#videocontrol').css('left');
+
+		    			if(position != "-100px")
+		    				location = "?pop"
+		    			else
+		    				location = "./videos"
+
+			      	}
+		    	});
+		});
+
+		$('#videocontrol').css('top', '6px')
+		$('#videocontrol').css('left', '-100px')
+
+		if (location.href.indexOf("pop") > -1)
+			$('#videocontrol').css('left', '100px')
+
+	</script>
+
+<% end %>
