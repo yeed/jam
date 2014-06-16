@@ -54,6 +54,8 @@ Jamdancedaddymovemomma::Application.routes.draw do
 
   get "home/single"
   get "home/initvideos"
+  get "home/whopass"
+  post "home/whopass"
 
   # See how all your routes lay out with "rake routes"
 

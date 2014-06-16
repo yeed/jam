@@ -21,6 +21,19 @@ class HomeController < ApplicationController
 
 	end
 
+	def whopass
+
+		winner = Integer(params[:winner])
+
+	    video = Video.find(winner)
+
+	    video.view_count = video.view_count + 1
+	    
+	    video.save
+	        
+	    redirect_to :action => "index"
+    end
+
 	def initvideos
 		require "net/https"
 		require "uri"

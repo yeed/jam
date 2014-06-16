@@ -39,7 +39,7 @@
 		<div class="videoframe bgcolororange shadowblue" style="margin-right:150px;">
 			<iframe width="267" height="267" src="<%= @firstvideo.url %>"></iframe>
 		</div>
-		<div class="youpassbtn">
+		<div class="youpassbtn" onclick="formSubmit(<%= @firstvideo.id %>)">
 			<%= image_tag "youpass_btn.png" %>
 		</div>
 	</div>
@@ -55,9 +55,24 @@
 		<div class="videoframe bgcolorgreen shadowpink" style="margin-left:150px;">
 			<iframe width="267" height="267" src="<%= @secondvideo.url %>"></iframe>
 		</div>
-		<div class="youpassbtn" style="margin-left: 182px;">
+		<div class="youpassbtn" style="margin-left: 182px;" onclick="formSubmit(<%= @secondvideo.id %>)">
 			<%= image_tag "youpass_btn.png" %>
 		</div>
 	</div>
 
 <% end %>
+
+  
+
+
+<form id="whopass" accept-charset="UTF-8" action="/home/whopass" method="post" style="display:none">
+	<input type="text" id="winner" name="winner" value="" />
+</form>
+
+<script>
+function formSubmit(x)
+{
+	$('#winner').val(x);
+	document.getElementById("whopass").submit();
+}
+</script>
