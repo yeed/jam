@@ -83,6 +83,7 @@ class HomeController < ApplicationController
 						@video.url = @videourl
 						@video.thumbnail_image_url = @imageurl
 						@video.video_id = @videoid
+						@video.view_count = 0
 
 						@video.save
 					else

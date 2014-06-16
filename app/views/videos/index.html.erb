@@ -1,16 +1,43 @@
 <div class="centerofpage" style="top:252px; width:830px">
 
-	<div class="videoholder">
+<div style="display:none">
+	<div id="data" style="height:320px">
+		<iframe id="videoplayer" width="267" height="267" src=""></iframe>
+		<p id="videosowner" style="text-align:center"></p>
+	</div>
+</div>	
 
+	<div class="videoholder">
 		<% @videos.each do |video| %>
 			<div class="smallvideoframe bgcolorgreen shadowsmall" style="margin-right:15px;margin-top:15px">
-				<%= image_tag video.thumbnail_image_url, :style => "width:180px" %>
+
+				<a class="fancybox" href="#data" onclick="SetIframe('<%= video.url%>áá<%= video.name%>')">
+					<%= image_tag video.thumbnail_image_url, :style => "width:180px" %>
+				</a>
 				<p><%= video.name %></p>
 			</div>
 		<% end %>
 
-	</div>
+		<script>
+		function SetIframe(x)
+		{
+			var split = x.split('áá');
+			$('#videoplayer').attr('src', split[0])
+			$('#videosowner').html(split[1])
+		}
 
+		
+		$(document).ready(function() {
+		  $("a.fancybox").fancybox({ 
+		  	afterClose: function() { $('#videoplayer').attr('src', "")	},
+		  	
+
+		  
+		  });
+		});
+
+		</script>
+	</div>
 </div>
 
 		    	

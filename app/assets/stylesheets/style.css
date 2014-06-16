@@ -56,3 +56,5 @@ body
 {background-image: url('groove.png'); background-repeat: no-repeat;width:267px;height:70px;float:right;margin-right:300px;margin-top:100px;}
 .sliderholderright
 {background-image: url('groove_right.png'); background-repeat: no-repeat;width:267px;height:70px;float:left;margin-left:300px;margin-top:100px;}
+.fancybox-skin 
+{background-color: #4ff28c!important;border-radius:0px!important;}
