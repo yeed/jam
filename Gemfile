@@ -1,13 +1,13 @@
 source 'https://rubygems.org'
 
-gem 'rails'
+gem 'rails', '3.2.1'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
 
-
+gem 'rails_12factor', group: :production
 # Gems used only for assets and not required
 # in production environments by default.
 
@@ -19,7 +19,10 @@ end
 
 
 
-gem 'jquery-rails', '~> 3.1.0'
+gem 'jquery-rails'
+
+gem 'rails_admin'
+
 # gem 'jquery-ui-rails'
 # gem 'railties'
 # gem 'fancybox2-rails', '~> 0.2.8'
