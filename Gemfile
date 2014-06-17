@@ -21,8 +21,8 @@ end
 
 gem 'jquery-rails', '~> 3.1.0'
 gem 'jquery-ui-rails'
-gem 'railties'
-gem 'fancybox2-rails', '~> 0.2.8'
+# gem 'railties'
+# gem 'fancybox2-rails', '~> 0.2.8'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
