@@ -1,13 +1,13 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.1'
+gem 'rails', '3.2.13'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
 
-gem 'rails_12factor', group: :production
+
 # Gems used only for assets and not required
 # in production environments by default.
 
@@ -19,13 +19,12 @@ end
 
 
 
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 3.1.0'
+gem 'jquery-ui-rails'
+gem 'railties'
+gem 'fancybox2-rails', '~> 0.2.8'
 
-gem 'rails_admin'
-
-# gem 'jquery-ui-rails'
-# gem 'railties'
-# gem 'fancybox2-rails', '~> 0.2.8'
+gem 'rails_12factor', group: :production 
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
