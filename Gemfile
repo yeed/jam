@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.13'
+gem 'rails'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -20,7 +20,7 @@ end
 
 
 gem 'jquery-rails', '~> 3.1.0'
-gem 'jquery-ui-rails'
+# gem 'jquery-ui-rails'
 # gem 'railties'
 # gem 'fancybox2-rails', '~> 0.2.8'
 
