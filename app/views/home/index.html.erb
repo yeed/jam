@@ -26,7 +26,9 @@
 			      	}
 		    	});
 		});
-
+		
+		
+		
 		$('#viewcontrol').css('left', '-100px')
 	</script>
 
@@ -37,7 +39,11 @@
 			<%= @firstvideo.name %>
 		</p>
 		<div class="videoframe bgcolororange shadowblue" style="margin-right:150px;">
-			<iframe width="267" height="267" src="<%= @firstvideo.url %>"></iframe>
+			<video width="267" onmouseover="UnMute(this)" onmouseout="Mute(this)" height="267" controls autoplay muted >
+			  <source src="<%= @firstvideo.url %>" type="video/mp4">
+
+			  Your browser does not support the video tag.
+			</video>
 		</div>
 		<div class="youpassbtn" onclick="formSubmit('<%= @firstvideo.id %>')">
 			<%= image_tag "youpass_btn.png" %>
@@ -53,7 +59,10 @@
 			<%= @secondvideo.name %>
 		</p>
 		<div class="videoframe bgcolorgreen shadowpink" style="margin-left:150px;">
-			<iframe width="267" height="267" src="<%= @secondvideo.url %>"></iframe>
+			<video width="267" onmouseover="UnMute(this)" onmouseout="Mute(this)" height="267" controls autoplay muted>
+			  <source src="<%= @secondvideo.url %>" type="video/mp4">
+			  Your browser does not support the video tag.
+			</video>
 		</div>
 		<div class="youpassbtn" style="margin-left: 182px;" onclick="formSubmit(<%= @secondvideo.id %>)">
 			<%= image_tag "youpass_btn.png" %>
@@ -75,4 +84,18 @@ function formSubmit(x)
 	$('#winner').val(x);
 	document.getElementById("whopass").submit();
 }
+
+
+function UnMute(x)
+{
+	x.muted = false;
+}
+
+function Mute(x)
+{
+	x.muted = true;
+}
+
+
+$("#video").attr('muted', true);
 </script>
