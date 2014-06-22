@@ -1,44 +1,114 @@
-<div class="centerofpage" style="top:252px; width:830px">
+<% if @videos.count > 1 && @searchmode == false%>
+	<div class="centerofpage" style="top:223px; width:848px;overflow: auto;height:511px">
 
-<div style="display:none">
-	<div id="data" style="height:320px">
-		<iframe id="videoplayer" width="267" height="267" src=""></iframe>
-		<p id="videosowner" style="text-align:center"></p>
-	</div>
-</div>	
-
-	<div class="videoholder">
-		<% @videos.each do |video| %>
-			<div class="smallvideoframe bgcolorgreen shadowsmall" style="margin-right:15px;margin-top:15px">
-
-				<a class="fancybox" href="#data" onclick="SetIframe('<%= video.url%>áá<%= video.name%>')">
-					<%= image_tag video.thumbnail_image_url, :style => "width:180px" %>
-				</a>
-				<p><%= video.name %></p>
+		<div style="display:none">
+			<div id="data" style="height:320px">
+				<iframe id="videoplayer" width="267" height="267" src=""></iframe>
+				<p id="videosowner" style="text-align:center"></p>
 			</div>
-		<% end %>
+		</div>	
 
-		<script>
-		function SetIframe(x)
-		{
-			var split = x.split('áá');
-			$('#videoplayer').attr('src', split[0])
-			$('#videosowner').html(split[1])
-		}
+		<div class="videoholder">
+			<% @videos.each do |video| %>
+				<div class="smallvideoframe bgcolorgreen shadowsmall" style="margin-right:15px;margin-top:15px">
 
-		
-		$(document).ready(function() {
-		  $("a.fancybox").fancybox({ 
-		  	afterClose: function() { $('#videoplayer').attr('src', "")	},
-		  	
+					<a class="fancybox" href="#data" onclick="SetIframe('<%= video.url%>áá<%= video.name%>')">
+						<%= image_tag video.thumbnail_image_url, :style => "width:180px" %>
+					</a>
+					<p><%= video.name %></p>
+				</div>
+			<% end %>
 
-		  
-		  });
-		});
+			<script>
+			function SetIframe(x)
+			{
+				var split = x.split('áá');
+				$('#videoplayer').attr('src', split[0])
+				$('#videosowner').html(split[1])
+			}
 
-		</script>
+			
+			$(document).ready(function() {
+			  $("a.fancybox").fancybox({ 
+			  	afterClose: function() { $('#videoplayer').attr('src', "")	},
+			  	
+
+			  
+			  });
+			});
+
+			</script>
+		</div>
 	</div>
-</div>
+	<% if @videos.count > 8 %>
+		<div class="centerofpage" style="top:733px; width:848px;font-family: 'hitchcock';font-size: 22px;color: yellow;text-align: center;">	
+			<p style="font-family:'hitchcock'">SCROLL TO LOAD MORE</p>
+		</div>
+	<% end %>
+
+<% elsif @videos.count > 1 && @searchmode == true %>
+	<div class="centerofpage" style="top:223px; width:848px;overflow: auto;height:511px">
+
+		<div style="display:none">
+			<div id="data" style="height:320px">
+				<iframe id="videoplayer" width="267" height="267" src=""></iframe>
+				<p id="videosowner" style="text-align:center"></p>
+			</div>
+		</div>	
+
+
+		<p style="text-align:left;font-weight:bold;margin: 0px;">
+			<%= @videos.first.name %>'s Videos
+		</p>
+		<div class="videoholder">
+			<% @videos.each do |video| %>
+				<div class="smallvideoframe bgcolorgreen shadowsmall" style="margin-right:15px;margin-top:15px">
+
+					<a class="fancybox" href="#data" onclick="SetIframe('<%= video.url%>áá<%= video.name%>')">
+						<%= image_tag video.thumbnail_image_url, :style => "width:180px" %>
+					</a>
+				</div>
+			<% end %>
+
+			<script>
+			function SetIframe(x)
+			{
+				var split = x.split('áá');
+				$('#videoplayer').attr('src', split[0])
+				$('#videosowner').html(split[1])
+			}
+
+			
+			$(document).ready(function() {
+			  $("a.fancybox").fancybox({ 
+			  	afterClose: function() { $('#videoplayer').attr('src', "")	},
+			  	
+
+			  
+			  });
+			});
+
+			</script>
+		</div>
+	</div>
+	<% if @videos.count > 8 %>
+		<div class="centerofpage" style="top:733px; width:848px;font-family: 'hitchcock';font-size: 22px;color: yellow;text-align: center;">	
+			<p style="font-family:'hitchcock'">SCROLL TO LOAD MORE</p>
+		</div>
+	<% end %>
+
+<% else %>
+	<div class="centerofpage" style="width:310px;top:252px;">
+
+		<p style="text-align:left;font-weight:bold">
+			<%= @videos.first.name %>'s Videos
+		</p>
+		<div class="videoframe bgcolorgreen shadow" style="height: 340px;">
+			<iframe width="267" height="267" src="<%= @videos.first.url %>"></iframe>
+		</div>
+
+	</div>
+<% end %>
 
 		    	
 <% content_for :left_side do %>
@@ -48,11 +118,24 @@
 	</div>
 
 	<script type="text/javascript">
+
+		var temp = [200,0];
+
+		if (window.location.href.indexOf("search") > -1)
+		{
+			$('#viewcontrol').css('left', '0px')
+			temp = [100,0]
+			$('.sliderholderright').css('display', 'none')
+		}
+		else
+			$('#viewcontrol').css('left', '100px')
+
+
 		$(function() {
 		    $( "#viewcontrol" ).draggable(
 		    	{ 
 		    		axis: "x", 
-		    		grid: [ 200, 0 ], 
+		    		grid: temp, 
 		    		containment: "parent",
 		    		stop: function() 
 		    		{
@@ -60,18 +143,27 @@
 				        
 				        if (position == "-100px")
 				        	location = "./";
+
+				        if (position == "100px")
+				        	location = "./videos";
 			      	}
 		    	});
 		});
 
-		$('#viewcontrol').css('left', '100px')
+		
+
 	</script>
 
 <% end %>
 
 
 <% content_for :right_side do %>
-
+	
+	<div class="searchbox">
+		<input type="text" id="s_box" value="<%= @searchparam %>"/>
+		<div class="gobutton" onclick="Go()"></div>
+	</div>
+	
 	<div class="sliderholderright">
 		<%= image_tag "slidepick.png", :id => "videocontrol" %>
 	</div>
@@ -96,11 +188,19 @@
 		    	});
 		});
 
+		function Go()
+		{
+			location = "./videos?search=" + $('#s_box').val()
+		}
+
 		$('#videocontrol').css('top', '6px')
 		$('#videocontrol').css('left', '-100px')
 
 		if (location.href.indexOf("pop") > -1)
 			$('#videocontrol').css('left', '100px')
+
+		if (window.location.href.indexOf("search") > -1)
+			$('.sliderholderright').css('display', 'none')
 
 	</script>
 

@@ -54,6 +54,7 @@ Jamdancedaddymovemomma::Application.routes.draw do
 
   get "home/single"
   get "home/initvideos"
+  get "home/initvinevideos"
   get "home/whopass"
   post "home/whopass"
 

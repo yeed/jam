@@ -39,6 +39,8 @@ class HomeController < ApplicationController
 		require "uri"
 		require 'json'
 
+		
+
 		uri = URI.parse("https://api.instagram.com/v1/tags/dance/media/recent?access_token=201508105.1fb234f.23f267ecdf4d409980c2d4163a3e3b4e&max_tag_id=1402827536318607")
 		http = Net::HTTP.new(uri.host, uri.port)
 		http.use_ssl = true
@@ -91,6 +93,55 @@ class HomeController < ApplicationController
 				  		next
 					end
 				end
+			end
+		end
+	end
+
+	def initvinevideos
+		require "net/https"
+		require "uri"
+		require 'json'
+
+
+		@leftsidebgcolor = "yellow"
+		@rightsidebgcolor = "yellow"
+
+		uri = URI.parse("https://api.vineapp.com/timelines/tags/dance")
+		http = Net::HTTP.new(uri.host, uri.port)
+		http.use_ssl = true
+		http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+		request = Net::HTTP::Get.new(uri.request_uri)
+
+		response = http.request(request)
+		puts response.body
+
+		hash = JSON.parse response.body
+		
+
+		@text = ""
+
+		hash['data']['records'].each do |child|
+
+			if Video.exists?(:video_id => child['postId'].to_s)
+				@text << "Video Kaydedilmis :(\n\n"
+			else
+				@text << 'Video Url: ' << child['postId'].to_s << "\n"
+				@text << 'Video Url: ' << child['videoUrl'] << "\n"
+				@text << 'Video Ismi: ' << child['description'] << "\n"
+				@text << 'Video Image Url: ' << child['thumbnailUrl'] << "\n"
+				@text << 'User Name: ' << child['username'] << "\n\n\n"
+
+				@video = Video.new
+
+				@video.name = child['username']
+				@video.description = child['description']
+				@video.url = child['videoUrl']
+				@video.thumbnail_image_url = child['thumbnailUrl']
+				@video.video_id = child['postId'].to_s
+				@video.view_count = 0
+
+				@video.save
 			end
 		end
 	end

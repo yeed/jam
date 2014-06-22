@@ -9,7 +9,23 @@ class VideosController < ApplicationController
 			videos = Video.order("videos.created_at DESC")
 		end
 
+		@searchmode = false
+
+		if params['search'] != nil
+			temp = videos.where(name: params['search'])
+			
+			if temp.count > 0
+				videos = temp
+				@rightsidebgcolor = "darkblue"
+				@searchmode = true
+			else
+				redirect_to :action => "index"
+			end
+
+		end
+		
 		@videos = videos
+		@searchparam = params['search']
 	end
 
 
