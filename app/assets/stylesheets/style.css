@@ -102,3 +102,14 @@ body
   min-width: 81px !important;
   min-height: 22px !important;
 }
+.fancybox-skin {
+    background: transparent;
+    box-shadow: none !important;
+  }
+
+  .fancybox-close
+  {
+    background-image: url('fancybox_sprite.png')!important;
+    top: 30px;
+    right: 71px;
+  }

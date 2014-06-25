@@ -4,11 +4,13 @@ class HomeController < ApplicationController
 	def single
 		@leftsidebgcolor = "orange"
 		@rightsidebgcolor = "darkblue"
+		@canvascolor = "#3072c4"
 	end
 
 	def index
 		@leftsidebgcolor = "blue"
 		@rightsidebgcolor = "pink"
+		@canvascolor = "#db438f"
 
 		offset = rand(Video.count)
 		offset2 = rand(Video.count)

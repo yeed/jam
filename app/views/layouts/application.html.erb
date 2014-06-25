@@ -16,11 +16,14 @@
 		  js = d.createElement(s); js.id = id;
 		  js.src = "//connect.facebook.net/tr_TR/sdk.js#xfbml=1&appId=822495544429570&version=v2.0";
 		  fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));</script>
+		}(document, 'script', 'facebook-jssdk'));
+		</script>
 
 		<div class="container">
 			<div class="centerofpage" style="width:349px">
 				<%= image_tag "logo.png" %>
+
+				<canvas id="myCanvas" width="300" height="590" style="margin-left: 135px;">Your browser does not support the HTML5 canvas tag.</canvas>
 			</div>
 
 			<%= yield %>
@@ -46,5 +49,20 @@
 				</div>
 			</div>
 		</div>
+
+		<script>
+			var colorOfrightside = "<%= @canvascolor %>"; 
+			var c=document.getElementById("myCanvas");
+			var ctx=c.getContext("2d");
+			ctx.beginPath();
+			ctx.moveTo(40,0);
+			ctx.lineTo(0,590);
+			ctx.lineTo(40,590);
+			ctx.lineTo(40,0);
+			ctx.strokeStyle = colorOfrightside;
+			ctx.stroke();
+			ctx.fillStyle= colorOfrightside;
+			ctx.fill();
+		</script>
 	</body>
 </html>

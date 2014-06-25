@@ -2,6 +2,7 @@ class VideosController < ApplicationController
 	def index
 		@leftsidebgcolor = "orange"
 		@rightsidebgcolor = "pink"
+		@canvascolor = "#db438f"
 
 		if request.original_url.include? "pop"
 			videos = Video.order("videos.view_count DESC")
@@ -17,6 +18,7 @@ class VideosController < ApplicationController
 			if temp.count > 0
 				videos = temp
 				@rightsidebgcolor = "darkblue"
+				@canvascolor = "#3072c4"
 				@searchmode = true
 			else
 				redirect_to :action => "index"
