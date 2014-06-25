@@ -26,6 +26,8 @@ gem 'fancybox2-rails', '~> 0.2.8'
 
 gem 'rails_12factor', group: :production 
 
+gem 'omniauth-facebook'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

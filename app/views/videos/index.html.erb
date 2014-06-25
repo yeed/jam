@@ -1,7 +1,7 @@
 <% if @videos.count > 1 && @searchmode == false%>
 	<div class="centerofpage" style="top:223px; width:848px;overflow: auto;height:511px">
 
-		<div style="display:none">
+		<div class="videopopup" style="display:none">
 			<div id="data" style="height:320px">
 				<iframe id="videoplayer" width="267" height="267" src=""></iframe>
 				<p id="videosowner" style="text-align:center"></p>
@@ -15,24 +15,27 @@
 					<a class="fancybox" href="#data" onclick="SetIframe('<%= video.url%>áá<%= video.name%>')">
 						<%= image_tag video.thumbnail_image_url, :style => "width:180px" %>
 					</a>
-					<p><%= video.name %></p>
+					<p><%= video.name[0..20] %></p>
+
+					<div class="fb-like" data-href="<%= video.shareurl%>" data-layout="button" data-action="like" data-show-faces="true" data-share="true" data-count="none"></div>
+				
 				</div>
 			<% end %>
 
+
 			<script>
+			
 			function SetIframe(x)
 			{
 				var split = x.split('áá');
-				$('#videoplayer').attr('src', split[0])
-				$('#videosowner').html(split[1])
+				$('#videoplayer').attr('src', split[0]);
+				$('#videosowner').html(split[1]);
 			}
 
 			
 			$(document).ready(function() {
 			  $("a.fancybox").fancybox({ 
 			  	afterClose: function() { $('#videoplayer').attr('src', "")	},
-			  	
-
 			  
 			  });
 			});
@@ -67,6 +70,8 @@
 					<a class="fancybox" href="#data" onclick="SetIframe('<%= video.url%>áá<%= video.name%>')">
 						<%= image_tag video.thumbnail_image_url, :style => "width:180px" %>
 					</a>
+
+					<div class="fb-like" data-href="<%= video.shareurl%>" data-layout="button" data-action="like" data-show-faces="true" data-share="true" data-count="none" style="top: 11px;"></div>
 				</div>
 			<% end %>
 
@@ -74,8 +79,8 @@
 			function SetIframe(x)
 			{
 				var split = x.split('áá');
-				$('#videoplayer').attr('src', split[0])
-				$('#videosowner').html(split[1])
+				$('#videoplayer').attr('src', split[0]);
+				$('#videosowner').html(split[1]);
 			}
 
 			
@@ -106,6 +111,8 @@
 		<div class="videoframe bgcolorgreen shadow" style="height: 340px;">
 			<iframe width="267" height="267" src="<%= @videos.first.url %>"></iframe>
 		</div>
+
+		<div class="fb-like" data-href="<%= @videos.first.shareurl%>" data-layout="button" data-action="like" data-show-faces="true" data-share="true" data-count="none" style="top: -35px!important;margin-left: 94px;"></div>
 
 	</div>
 <% end %>

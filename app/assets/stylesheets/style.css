@@ -60,7 +60,9 @@ body
 {background-image: url('groove.png'); background-repeat: no-repeat;width:267px;height:70px;float:right;margin-right:300px;margin-top:100px;}
 .sliderholderright
 {background-image: url('groove_right.png'); background-repeat: no-repeat;width:267px;height:70px;float:left;margin-left:303px;margin-top:15px;}
-.fancybox-skin 
+#fbpopup .fancybox-skin 
+{background-color: White!important;border-radius:0px!important;}
+.videopopup .fancybox-skin 
 {background-color: #4ff28c!important;border-radius:0px!important;}
 @font-face{font-family: 'hitchcock';src: url('Hitchcock.ttf') format('truetype');font-weight: normal;font-style: normal;}
 .searchbox
@@ -71,3 +73,32 @@ body
 {background-image: url('go.png'); background-repeat: no-repeat;width:60px;height:47px;float: left;margin-left: 14px;cursor:pointer;}
 .centerofpage::-webkit-scrollbar 
 {display: none;}
+.centerofpage::-moz-scrollbar 
+{display: none;}
+.centerofpage::-ms-scrollbar 
+{display: none;}
+.centerofpage::scrollbar 
+{display: none;}
+-moz-appearance:scrollbar
+{display:none;}
+.smallvideoframe p 
+{margin-top:1px;margin-bottom:2px;}
+.fb-like {
+  display: inline-block !important;
+  vertical-align: middle !important;
+  margin-right: 1.5em;
+  line-height: 30px;
+  width: 81px !important;
+  height: 22px !important;
+  position: relative;
+  z-index: 1002;
+}
+.fb-like > span {
+  vertical-align: top !important;
+  min-width: 81px !important;
+  min-height: 22px !important;
+}
+.fb-like > span > iframe {
+  min-width: 81px !important;
+  min-height: 22px !important;
+}

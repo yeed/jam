@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+	protect_from_forgery except: :index
 
 	def single
 		@leftsidebgcolor = "orange"
@@ -19,19 +20,23 @@ class HomeController < ApplicationController
 		@firstvideo = Video.first(:offset => offset)
 		@secondvideo = Video.first(:offset => offset2)
 
+		if params[:winner] != nil
+			winner = Integer(params[:winner])
+
+		    video = Video.find(winner)
+
+		    video.view_count = video.view_count + 1
+		    
+		    video.save
+       
+		    redirect_to :back
+	    end
+
 	end
 
 	def whopass
 
-		winner = Integer(params[:winner])
 
-	    video = Video.find(winner)
-
-	    video.view_count = video.view_count + 1
-	    
-	    video.save
-	        
-	    redirect_to :action => "index"
     end
 
 	def initvideos
@@ -71,12 +76,14 @@ class HomeController < ApplicationController
 						@videourl = child['videos']['standard_resolution']['url']
 						@imageurl = child['images']['standard_resolution']['url']
 						@username = child['user']['username']
+						@shareurl = child['link']
 
 						@text << 'Video Ismi: ' << @videoname << "\n"
 						@text << 'Video Url: ' << @videourl << "\n"
 						@text << 'Video Image Url: ' << @imageurl << "\n"
 						@text << 'Video ID: ' << @videoid << "\n"
 						@text << 'User Name: ' << @username << "\n"
+						@text << 'Share url: ' << @shareurl << "\n"
 		  	
 						@video = Video.new
 
@@ -86,6 +93,7 @@ class HomeController < ApplicationController
 						@video.thumbnail_image_url = @imageurl
 						@video.video_id = @videoid
 						@video.view_count = 0
+						@video.shareurl = @shareurl
 
 						@video.save
 					else
@@ -130,6 +138,7 @@ class HomeController < ApplicationController
 				@text << 'Video Url: ' << child['videoUrl'] << "\n"
 				@text << 'Video Ismi: ' << child['description'] << "\n"
 				@text << 'Video Image Url: ' << child['thumbnailUrl'] << "\n"
+				@text << 'Share Url: ' << child['shareUrl'] << "\n"
 				@text << 'User Name: ' << child['username'] << "\n\n\n"
 
 				@video = Video.new
@@ -140,6 +149,7 @@ class HomeController < ApplicationController
 				@video.thumbnail_image_url = child['thumbnailUrl']
 				@video.video_id = child['postId'].to_s
 				@video.view_count = 0
+				@video.shareurl = child['shareUrl']
 
 				@video.save
 			end

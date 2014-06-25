@@ -2,14 +2,35 @@
 	<%= image_tag "or.png" %>
 
 	<%= @video %>
+
+	<div id="fbpopup" style="display:none">
+		<div id="data" style="width:420px;height:200px">
+
+			<%= link_to("/auth/facebook", :id => "sign_in") do %>
+		  		<%= image_tag "fblike.png", :style => "margin-left: 124px;margin-top: 29px;" %>
+			<% end %>
+
+			
+			<p style="margin-left: 50px;margin-top: 33px;">Make your selection count by liking Jam Audio.</p>
+		</div>
+	</div>
+
+	<script>
+		
+
+	</script>
 </div>
 
 <% content_for :left_side do %>
-
+	
+	<% if current_user %>
 	<div class="sliderholder">
 		<%= image_tag "slidepick.png", :id => "viewcontrol" %>
 	</div>
 
+	<% else %>
+	<div style="margin-top: 167px;"></div>
+	<% end %>
 	<script type="text/javascript">
 		$(function() {
 		    $( "#viewcontrol" ).draggable(
@@ -26,8 +47,6 @@
 			      	}
 		    	});
 		});
-		
-		
 		
 		$('#viewcontrol').css('left', '-100px')
 	</script>
@@ -50,6 +69,11 @@
 		</div>
 	</div>
 
+
+	<a id="fbpopup_click" class="fancybox" href="#data" style="display:none">
+		test
+	</a>
+
 <% end %>
 
 <% content_for :right_side do %>
@@ -71,19 +95,30 @@
 
 <% end %>
 
-  
-
-
-<form id="whopass" accept-charset="UTF-8" action="/home/whopass" method="post" style="display:none">
+<form id="whopass" accept-charset="UTF-8" action="/home/index" method="post" style="display:none">
 	<input type="text" id="winner" name="winner" value="" />
 </form>
 
 <script>
+
+$(".fancybox-skin").css('background-color', 'white');
+
+var test = '<%= current_user %>';
+
 function formSubmit(x)
 {
-	$('#winner').val(x);
-	document.getElementById("whopass").submit();
+	if (test)
+	{
+		$('#winner').val(x);
+		document.getElementById("whopass").submit();
+	}
+	else
+	{
+		document.getElementById('fbpopup_click').click();
+	}
 }
+
+
 
 
 function UnMute(x)
@@ -95,6 +130,10 @@ function Mute(x)
 {
 	x.muted = true;
 }
+
+$(document).ready(function() {
+  $("a.fancybox").fancybox();
+});
 
 
 $("#video").attr('muted', true);
