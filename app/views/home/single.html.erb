@@ -1,10 +1,76 @@
-<div class="centerofpage" style="width:310px;top:252px;">
+<div class="centerofpage" style="width:400px;top:211px;">
 
-	<p style="text-align:left;font-weight:bold">
-		Danglehead's Videos
-	</p>
-	<div class="videoframe bgcolorgreen shadow" style="height: 340px;">
-		<%= image_tag "dancer1.jpg" %>
+	<div id="fbpopup" style="display:none">
+		<div id="data" style="width:568px;height:346px">
+
+	  		<%= image_tag "popupframe.png", :style => "position:absolute" %>
+
+	  		<%= link_to("/auth/facebook", :id => "sign_in") do %>
+		  		<%= image_tag "fblike.png", :style => "margin-left: 188px;margin-top: 100px;position:absolute" %>
+			<% end %>
+
+			
+			<p style="margin-left: 106px;margin-top: 203px;position: absolute;">Make your selection count by liking Jam Audio.</p>
+		</div>
 	</div>
 
+	<p style="text-align:left;font-weight:bold">
+		<%= @video.name %>'s Videos
+	</p>
+	<div class="videoframe_big bgcolorgreen shadow" style="height: 418px;">
+		<iframe width="350" height="350" src="<%= @video.url %>"></iframe>
+	</div>
+
+	
 </div>
+<div class="centerofpage" style="width:542px;top:681px;">
+	<% if current_user %>
+		<%= link_to("../") do %>
+			<%= image_tag "gotodanceoff.png", :style => "margin-left: 0px;margin-top: 32px;float:left" %>
+		<% end %>
+		<%= link_to("/videos", :id => "sign_in") do %>
+			<%= image_tag "viewallvideos.png", :style => "margin-left: 15px;margin-top: 32px;float:left" %>
+		<% end %>
+	<% else %>
+		<a href="#data" class="fancybox" >
+			<%= image_tag "supportmymoves.png", :style => "margin-left: 139px;margin-top: 34px;" %>
+		</a>
+	<% end %>
+
+</div>
+
+<% content_for :left_side do %>
+	
+	<% if current_user %>
+	<div class="sliderholder">
+		<%= image_tag "slidepick.png", :id => "viewcontrol" %>
+	</div>
+	<% end %>
+<% end %>
+
+
+
+<script>
+	$(document).ready(function() {
+		$("a.fancybox").fancybox();
+	});
+
+	$(function() {
+    $( "#viewcontrol" ).draggable(
+    	{ 
+    		axis: "x", 
+    		grid: [ 100, 0 ], 
+    		containment: "parent",
+    		stop: function() 
+    		{
+    			var position = $('#viewcontrol').css('left');
+		        
+		        if (position == "100px")
+		        	location = "../videos";
+		        if (position == "-100px")
+		        	location = "../";
+	      	}
+    	});
+});
+
+</script>

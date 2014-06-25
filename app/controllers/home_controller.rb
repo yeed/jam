@@ -2,9 +2,16 @@ class HomeController < ApplicationController
 	protect_from_forgery except: :index
 
 	def single
+
 		@leftsidebgcolor = "orange"
 		@rightsidebgcolor = "darkblue"
 		@canvascolor = "#3072c4"
+
+
+		offset = rand(Video.count)
+
+		@video = Video.first(:offset => offset)
+
 	end
 
 	def index

@@ -6,8 +6,9 @@
 	<div id="fbpopup" style="display:none">
 		<div id="data" style="width:568px;height:346px">
 
-			<%= link_to("/auth/facebook", :id => "sign_in") do %>
-		  		<%= image_tag "popupframe.png", :style => "position:absolute" %>
+	  		<%= image_tag "popupframe.png", :style => "position:absolute" %>
+
+	  		<%= link_to("/auth/facebook", :id => "sign_in") do %>
 		  		<%= image_tag "fblike.png", :style => "margin-left: 188px;margin-top: 100px;position:absolute" %>
 			<% end %>
 
