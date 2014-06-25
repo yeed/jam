@@ -44,8 +44,6 @@ class HomeController < ApplicationController
 	end
 
 	def whopass
-
-
     end
 
 	def initvideos

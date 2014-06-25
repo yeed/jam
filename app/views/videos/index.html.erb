@@ -1,5 +1,5 @@
 <% if @videos.count > 1 && @searchmode == false%>
-	<div class="centerofpage" style="top:223px; width:848px;overflow: auto;height:511px">
+	<div class="centerofpage" style="top:239px; width:848px;overflow: auto;height:511px">
 
 		<div class="videopopup" style="display:none">
 			<div id="data" style="width:430px;height:530px">
@@ -144,7 +144,7 @@
 			<iframe width="350" height="350" src="<%= @videos.first.url %>"></iframe>
 		</div>
 
-		<div class="fb-like" data-href="<%= @videos.first.shareurl%>" data-layout="button" data-action="like" data-show-faces="true" data-share="true" data-count="none" style="top: -35px!important;margin-left: 94px;"></div>
+		<div class="fb-like" data-href="<%= @videos.first.shareurl%>" data-layout="button" data-action="like" data-show-faces="true" data-share="true" data-count="none" style="top: -35px!important;margin-left: 140px;"></div>
 
 	</div>
 <% end %>
