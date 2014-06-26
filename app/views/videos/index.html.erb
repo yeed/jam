@@ -1,5 +1,5 @@
 <% if @videos.count > 1 && @searchmode == false%>
-	<div class="centerofpage" style="top:239px; width:848px;overflow: auto;height:511px">
+	<div class="centerofpage scrollable" style="top:239px; width:855px;overflow: hidden;height:511px">
 
 		<div class="videopopup" style="display:none">
 			<div id="data" style="width:430px;height:530px">
@@ -19,6 +19,9 @@
 					<p><%= video.name[0..20] %></p>
 
 					<div id="<%= video.id %>" class="fb-like" data-href="<%= video.shareurl%>" data-layout="button" data-action="like" data-show-faces="true" data-share="true" data-count="none"></div>
+
+					
+
 				
 				</div>
 			<% end %>
@@ -51,6 +54,7 @@
 			$(document).ready(function() {
 			  $("a.fancybox").fancybox({ 
 			  	afterClose: function() { $('#videoplayer').attr('src', "")	},
+			  	closeBtn: false,
 			  
 			  });
 			});
@@ -59,13 +63,13 @@
 		</div>
 	</div>
 	<% if @videos.count > 8 %>
-		<div class="centerofpage" style="top:733px; width:848px;font-family: 'hitchcock';font-size: 22px;color: yellow;text-align: center;">	
+		<div class="centerofpage" style="top:741px; width:848px;font-family: 'hitchcock';font-size: 22px;color: yellow;text-align: center;">	
 			<p style="font-family:'hitchcock'">SCROLL TO LOAD MORE</p>
 		</div>
 	<% end %>
 
 <% elsif @videos.count > 1 && @searchmode == true %>
-	<div class="centerofpage" style="top:223px; width:848px;overflow: auto;height:511px">
+	<div class="centerofpage scrollable" style="top:223px; width:855px;overflow: auto;height:511px">
 
 		<div class="videopopup" style="display:none">
 			<div id="data" style="width:430px;height:530px">
@@ -129,7 +133,7 @@
 		</div>
 	</div>
 	<% if @videos.count > 8 %>
-		<div class="centerofpage" style="top:733px; width:848px;font-family: 'hitchcock';font-size: 22px;color: yellow;text-align: center;">	
+		<div class="centerofpage" style="top:742px; width:848px;font-family: 'hitchcock';font-size: 22px;color: yellow;text-align: center;">	
 			<p style="font-family:'hitchcock'">SCROLL TO LOAD MORE</p>
 		</div>
 	<% end %>
@@ -244,3 +248,10 @@
 	</script>
 
 <% end %>
+
+<script>
+	$('.scrollable').perfectScrollbar();
+
+	
+</script>
+
