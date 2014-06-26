@@ -124,4 +124,4 @@ body
 
 @font-face{font-family: 'TradeGothic';src: url('TradeGothic.otf') format('opentype');font-weight: normal;font-style: normal;}
 
-.scrollable{overflow: hidden; overflow-x: hidden, overflow-y: hidden}
+.scrollable{overflow: hidden; overflow-x: hidden; overflow-y: hidden;}
