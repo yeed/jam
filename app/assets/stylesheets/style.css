@@ -91,29 +91,21 @@ body
 {display:none;}
 .smallvideoframe p 
 {margin-top:1px;margin-bottom:2px;}
-.fb-like {
-  display: inline-block !important;
-  vertical-align: middle !important;
-  margin-right: 1.5em;
-  line-height: 30px;
-  width: 81px !important;
-  height: 22px !important;
-  position: relative;
-  z-index: 1002;
-}
-.fb-like > span {
-  vertical-align: top !important;
-  min-width: 81px !important;
-  min-height: 22px !important;
-}
-.fb-like > span > iframe {
-  min-width: 81px !important;
-  min-height: 22px !important;
-}
+
+
+@font-face{font-family: 'TradeGothic';src: url('TradeGothic.otf') format('opentype');font-weight: normal;font-style: normal;}
+
+.scrollable{overflow: hidden; overflow-x: hidden; overflow-y: hidden;}
+
+
+.fb-like {float:left;margin-left: 8px;margin-top: 3px;}
+.twitter-share-button { float:left;margin-left: 5px;margin-top: 3px;}
 .fancybox-skin {
     background: transparent;
     box-shadow: none !important;
   }
+
+
 
   .fancybox-close
   {
@@ -122,6 +114,6 @@ body
     right: 71px;
   }
 
-@font-face{font-family: 'TradeGothic';src: url('TradeGothic.otf') format('opentype');font-weight: normal;font-style: normal;}
-
-.scrollable{overflow: hidden; overflow-x: hidden; overflow-y: hidden;}
+.fb_edge_widget_with_comment span.fb_edge_comment_widget iframe.fb_ltr {
+    display: none !important;
+}

@@ -1,4 +1,5 @@
 <div class="centerofpage" style="width:200px;top:412px;">
+
 	<%= image_tag "or.png" %>
 
 	<%= @video %>
@@ -60,7 +61,7 @@
 			<%= @firstvideo.name %>
 		</p>
 		<div class="videoframe bgcolororange shadowblue" style="margin-right:150px;">
-			<video width="267" onmouseover="UnMute(this)" onmouseout="Mute(this)" height="267" controls autoplay muted >
+			<video width="267" onmouseover="UnMute(this)" onmouseout="Mute(this)" height="267" controls autoplay muted>
 			  <source src="<%= @firstvideo.url %>" type="video/mp4">
 
 			  Your browser does not support the video tag.
@@ -120,9 +121,6 @@ function formSubmit(x)
 	}
 }
 
-
-
-
 function UnMute(x)
 {
 	x.muted = false;
@@ -139,4 +137,10 @@ $(document).ready(function() {
 
 
 $("#video").attr('muted', true);
+
+
+
+
+
+
 </script>
