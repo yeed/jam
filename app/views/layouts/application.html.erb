@@ -9,7 +9,29 @@
 	<body>
 		<div class="container">
 			<div class="centerofpage" style="width:487px">
-				<%= image_tag "logo.png" %>
+				<div id="howtowin" style="display:none">
+					<div id="data3" style="width:868px;height:546px">
+				  		<%= image_tag "popupframe_big.png", :style => "position:absolute" %>
+				  		<div style="width: 626px;height: 325px;padding-top: 81px;color: black;z-index: 60;position: absolute;padding-left: 51px;">
+				  			<p class="popupheader" style="margin:0px 0px 10px 0px">SAVE YOUR PARENTS A PILE OF CASH ALL THEY HAVE TO DO IS DANCE.</p>
+			  				
+		  					<%= image_tag "1.jpg", :style => "padding-left: 38px;padding-right: 27px;float: left;" %>
+		  					<p class="popupheader" style="color:Black;text-align:left;margin: 0;float: left;">FILL 'EM<br/>
+		  					<span style="margin: 0;float: left;font-family:'TradeGothic';font-size: 17px;width: 506px;">Submit one or more Vine or Instagram videos of your parents cutting a rug. The funnier the better, but keep it clean.</span></p>
+
+		  					<%= image_tag "2.jpg", :style => "padding-left: 38px;padding-right: 27px;float: left;" %>
+		  					<p class="popupheader" style="color:Black;text-align:left;margin: 0;float: left;">TAG IT</p>
+		  					<p style="margin: 0;float: left;font-family:'TradeGothic';font-size: 17px;width: 506px;">Use hashtag <span>#JAM25KENTRY</span> to enter your vid then share it with friends. Jam speaks will be given away each week.</p>
+
+		  					<%= image_tag "3.jpg", :style => "padding-left: 38px;padding-right: 27px;float: left;" %>
+		  					<p class="popupheader" style="color:Black;text-align:left;margin: 0;float: left;">THE BIG MONEY</p>
+		  					<p style="margin: 0;float: left;font-family:'TradeGothic';font-size: 17px;width: 506px;">Come back August 22 to help us vote on the top 3 videos. The $25K scholarship winner will be announced in September.</p>
+
+				  		</div>
+					</div>
+				</div>
+
+				<%= link_to image_tag('logo.png'), url_for({:controller => 'home', :action => 'index'}) %>
 
 				<canvas id="myCanvas" width="300" height="562" style="margin-left:204px;margin-top: 1px;">Your browser does not support the HTML5 canvas tag.</canvas>
 			</div>
@@ -30,11 +52,17 @@
 		<div class="footer">
 			<div class="footercontainer">
 				<div class="shopbtn">
-					<%= image_tag "shopproducts.png" %>
+					<a href="http://www.jamaudio.com/products">
+					<%= image_tag "shop_btn.png", :style => "margin-top: -38px;z-index: 3;position: relative;" %>
+					</a>
 				</div>
-				<div class="facebookbtn">
+				<%= image_tag "jam25kentry.png", :style => "margin:auto" %>
+
+				<a class="fancybox3 facebookbtn" href="#data3">
 					<%= image_tag "facebookbtn.png" %>
-				</div>
+				</a>
+
+								
 			</div>
 		</div>
 
@@ -61,6 +89,14 @@
 			 }else{
 			 // Block
 			 }
+
+	  
+			 $(document).ready(function() {
+				  $("a.fancybox3").fancybox({ 
+				  	closeBtn: false,
+				  
+				  });
+				});
 		</script>
 	</body>
 </html>

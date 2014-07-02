@@ -13,15 +13,14 @@ class VideosController < ApplicationController
 		@searchmode = false
 
 		if params['search'] != nil
-			temp = videos.where(name: params['search'])
+			videos = videos.where(name: params['search'])
 			
-			if temp.count > 0
-				videos = temp
+			
+			@searchmode = true
+
+			if videos.count > 0
 				@rightsidebgcolor = "darkblue"
 				@canvascolor = "#3072c4"
-				@searchmode = true
-			else
-				redirect_to :action => "index"
 			end
 
 		end

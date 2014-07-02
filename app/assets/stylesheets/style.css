@@ -1,5 +1,5 @@
 body
-{margin:0px;background-color:Black;font-family: 'TradeGothic'}
+{margin:0px;background-color:Black;font-family: 'TradeGothic'; }
 .container
 {float:left;width:100%;position:relative;}
 .content
@@ -49,13 +49,13 @@ body
 .centerofpage
 {position:absolute; margin-left: auto;margin-right: auto;left: 0;right: 0;}
 .youpassbtn
-{width: 255px;height: 74px;margin-top: 47px;margin-left: 32px;cursor: pointer;}
+{width: 255px;height: 74px;margin-top: 47px;margin-left: 32px;cursor:url('bigcursor.gif'), auto;background-image:url('youpass_btn.png');position: absolute;}
 .shopbtn
 {float:left;width:215px;cursor:pointer;}
 .facebookbtn
 {float:right;width:215px;cursor:pointer;}
 .footercontainer
-{width:1200px; margin:auto; padding-top:53px}
+{width:1200px; margin:auto; padding-top:19px;text-align: center}
 .footer
 {height:150px; background-color:Black}
 .smallvideoframe
@@ -64,11 +64,14 @@ body
 {padding-top:4px}
 .videoholder
 {margin-left:15px;padding-left:10px}
+.socialmedia{float:right;margin-right:337px;width:267px;height:38px;margin-right:370px;margin-top:56px;}
 .sliderholder
-{background-image: url('groove.png'); background-repeat: no-repeat;width:267px;height:70px;float:right;margin-right:300px;margin-top:100px;}
+{background-image: url('groove.png'); background-repeat: no-repeat;width:267px;height:70px;float:right;margin-right:300px;margin-top:5px;}
 .sliderholderright
 {background-image: url('groove_right.png'); background-repeat: no-repeat;width:267px;height:70px;float:left;margin-left:303px;margin-top:15px;}
 #fbpopup .fancybox-skin 
+{background-color: White!important;border-radius:0px!important;}
+#howtowin .fancybox-skin 
 {background-color: White!important;border-radius:0px!important;}
 .videopopup .fancybox-skin 
 {background-color: #4ff28c!important;border-radius:0px!important;}
@@ -91,29 +94,36 @@ body
 {display:none;}
 .smallvideoframe p 
 {margin-top:1px;margin-bottom:2px;}
-
-
 @font-face{font-family: 'TradeGothic';src: url('TradeGothic.otf') format('opentype');font-weight: normal;font-style: normal;}
-
 .scrollable{overflow: hidden; overflow-x: hidden; overflow-y: hidden;}
-
-
 .fb-like {float:left;margin-left: 8px;margin-top: 3px;}
 .twitter-share-button { float:left;margin-left: 5px;margin-top: 3px;}
-.fancybox-skin {
-    background: transparent;
-    box-shadow: none !important;
-  }
-
-
-
-  .fancybox-close
-  {
-    background-image: url('fancybox_sprite.png')!important;
-    top: 30px;
-    right: 71px;
-  }
-
+.fancybox-skin {background: transparent;box-shadow: none !important;}
+.fancybox-close{background-image: url('fancybox_sprite.png')!important;top: 30px;right: 71px;}
 .fb_edge_widget_with_comment span.fb_edge_comment_widget iframe.fb_ltr {
     display: none !important;
 }
+
+img.facebook {
+    width: 29px;
+    height: 29px;
+    background: url('socialmedia.png') 0 0;
+
+}
+
+img.instagram {
+    width: 29px;
+    height: 29px;
+    background: url('socialmedia.png') 30px 0;
+    margin-left:10px;
+}
+
+img.twitter {
+    width: 29px;
+    height: 29px;
+    background: url('socialmedia.png') 68px 0;
+    margin-left:10px;
+}
+.popupheader{font-family:'hitchcock';color:#f2944f;font-size:33px;color:#f2944f;text-align:center;}
+
+

@@ -1,6 +1,4 @@
-
-
-<% if @videos.count > 1 && @searchmode == false%>
+<% if @videos.count > 1 %>
 	<div class="centerofpage scrollable" style="top:239px; width:1335px;overflow: hidden;height:511px">
 		<div style="width:855px; margin:auto">
 			<div class="videopopup" style="display:none">
@@ -10,6 +8,12 @@
 					<h2 id="videosowner" style="text-align:center;position: absolute;margin-top: 402px;width:402px"></h2>
 				</div>
 			</div>	
+
+			<% if @searchmode == true %>
+			<p style="text-align:left;font-weight:bold;margin:0 0 0 25px;">
+				<%= @videos.first.name %>'s Videos
+			</p>
+			<% end %>
 
 			<div class="videoholder">
 				<% @videos.each do |video| %>
@@ -72,82 +76,7 @@
 		</div>
 	<% end %>
 
-<% elsif @videos.count > 1 && @searchmode == true %>
-	<div class="centerofpage scrollable" style="top:239px; width:1335px;overflow: hidden;height:511px">
-		<div style="width:855px; margin:auto">
-			<div class="videopopup" style="display:none">
-				<div id="data" style="width:430px;height:530px">
-					<%= image_tag "videoholder_bg.png", :style => "position:absolute" %>
-					<iframe id="videoplayer" width="371" height="371" src="" style="position:absolute;margin-top: 15px;margin-left: 15px;"></iframe>
-					<h2 id="videosowner" style="text-align:center;position: absolute;margin-top: 402px;width:402px"></h2>
-				</div>
-			</div>	
-
-
-			<p style="text-align:left;font-weight:bold;margin:0 0 0 25px;">
-				<%= @videos.first.name %>'s Videos
-			</p>
-			<div class="videoholder">
-				<% @videos.each do |video| %>
-					<div class="smallvideoframe bgcolorgreen shadowsmall" style="margin-right:15px;margin-top:15px">
-
-						<a class="fancybox" href="#data" onclick="SetIframe('<%= video.url%>áá<%= video.name%>áá<%= video.id %>')">
-							<%= image_tag video.thumbnail_image_url, :style => "width:180px" %>
-						</a>
-						<p><%= video.name[0..20] %></p>
-
-						<div id="fb-root"></div>
-						<div id="<%= video.id %>" class="fb-like" data-href="<%= video.shareurl%>" data-layout="button" data-action="like" data-show-faces="true" data-share="true" data-count="none"></div>
-
-
-						<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-count="none" data-url="<%= video.shareurl%>">Tweet</a>	
-					
-					</div>
-				<% end %>
-
-				<script>
-				function SetIframe(x)
-				{
-					$("[id*='clone']").remove();
-
-					var split = x.split('áá');
-					$('#videoplayer').attr('src', split[0]);
-					$('#videosowner').html('@'+split[1]);
-
-					var i = 0;
-
-				    var original = document.getElementById(split[2]);
-				    var clone = original.cloneNode(true); // "deep" clone
-				    
-				    clone.id = "clone" + ++i; // there can only be one element with an ID
-				    clone.style.marginLeft = "153px";
-				    clone.style.marginTop = "460px";
-				    
-			    	$('#data').append(clone);
-
-				}
-
-				
-				$(document).ready(function() {
-				  $("a.fancybox").fancybox({ 
-				  	afterClose: function() { $('#videoplayer').attr('src', "")	},
-				  	
-
-				  
-				  });
-				});
-
-				</script>
-			</div>
-		</div>
-	</div>
-	<% if @videos.count > 8 %>
-		<div class="centerofpage" style="top:742px; width:848px;font-family: 'hitchcock';font-size: 22px;color: yellow;text-align: center;">	
-			<p style="font-family:'hitchcock'">SCROLL TO LOAD MORE</p>
-		</div>
-	<% end %>
-
-<% else %>
+<% elsif @videos.count == 1 %>
 	<div class="centerofpage" style="width:400px;top:235px;">
 
 		<p style="text-align:left;font-weight:bold">
@@ -160,12 +89,22 @@
 		<div class="fb-like" data-href="<%= @videos.first.shareurl%>" data-layout="button" data-action="like" data-show-faces="true" data-share="true" data-count="none" style="top: -35px!important;margin-left: 140px;"></div>
 
 	</div>
+<% else %> 
+	<div class="centerofpage" style="width:400px;top:235px;">
+		<p style="text-align:center;font-family:'hitchcock';font-size:41px;color:white;margin-top:153px">
+			SORRY!
+		</p>
+		<p style="text-align:center;font-family:'TradeGothic';font-size:30px;color:white;margin-top: -21px;">
+			Your Search didn't return any results
+		</p>
+	</div>
 <% end %>
 
 		    	
 <% content_for :left_side do %>
 
-	<div class="sliderholder">
+
+	<div class="sliderholder" style="margin-top: 102px;">
 		<%= image_tag "slidepick.png", :id => "viewcontrol" %>
 	</div>
 
