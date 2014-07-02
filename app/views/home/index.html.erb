@@ -45,16 +45,25 @@
 		<a href="http://instagram.com/JamAudio"><%= image_tag "transparent.gif", :class => "instagram" %></a>
 	</div>
 
-	<% if current_user %>
+	<% unless current_user %>
 	<div class="sliderholder">
 		<%= image_tag "slidepick.png", :id => "viewcontrol" %>
 	</div>
+
+	<div style="width: 75px;height: 54px;background-color: transparent;position: relative;margin-right: 304px;float: right;margin-top: -63px;;cursor:pointer" onclick="ViewAll()"> </div>
+
 
 	<% else %>
 		<div style="margin-top: 167px;"></div>
 	<% end %>
 
 	<script type="text/javascript">
+		function ViewAll()
+		{
+			location = "videos";
+		}
+
+
 		$(function() {
 		    $( "#viewcontrol" ).draggable(
 		    	{ 

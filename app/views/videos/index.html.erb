@@ -1,5 +1,5 @@
 <% if @videos.count > 1 %>
-	<div class="centerofpage scrollable" style="top:239px; width:1335px;overflow: hidden;height:511px">
+	<div class="centerofpage scrollable" style="top:239px; width:1335px;overflow: hidden;height:521px">
 		<div style="width:855px; margin:auto">
 			<div class="videopopup" style="display:none">
 				<div id="data" style="width:430px;height:530px">
@@ -107,12 +107,27 @@
 		    	
 <% content_for :left_side do %>
 
-
 	<div class="sliderholder" style="margin-top: 102px;">
 		<%= image_tag "slidepick.png", :id => "viewcontrol" %>
 	</div>
 
+	<div style="width: 75px;height: 54px;background-color: transparent;position: relative;margin-right: 485px;float: right;margin-top: -63px;cursor:pointer" onclick="Danceoff()"> </div>
+
+	<% if request.original_url.include? "search" %>
+		<div style="width: 75px;height: 54px;background-color: transparent;position: relative;margin-right: 310px;float: right;margin-top: -63px;cursor:pointer" onclick="ViewAll()"> </div>
+	<% end %>
+
 	<script type="text/javascript">
+
+		function Danceoff()
+		{
+			location = "./";
+		}
+
+		function ViewAll()
+		{
+			location = "videos";
+		}
 
 		var temp = [200,0];
 
@@ -163,7 +178,24 @@
 		<%= image_tag "slidepick.png", :id => "videocontrol" %>
 	</div>
 
+	<% if request.original_url.include? "pop" %>
+	<div style="width: 75px;height: 54px;background-color: transparent;position: absolute;margin-left: 310px;float: left;margin-top: 114px;cursor:pointer" onclick="MostRecent()"> </div>
+	<% else %>
+	<div style="width: 75px;height: 54px;background-color: transparent;position: absolute;margin-left: 485px;float: left;margin-top: 114px;cursor:pointer" onclick="MostPopular()"> </div>
+	<% end %>
+
 	<script type="text/javascript">
+
+		function MostRecent()
+		{
+			location = "./videos"
+		}
+
+		function MostPopular()
+		{
+			location = "?pop"
+		}
+
 		$(function() {
 		    $( "#videocontrol" ).draggable(
 		    	{ 
