@@ -25,7 +25,7 @@
 						<p><%= video.name[0..20] %></p>
 
 						<div id="fb-root"></div>
-						<div id="<%= video.id %>" class="fb-like" data-href="<%= video.shareurl%>" data-layout="button" data-action="like" data-show-faces="true" data-share="true" data-count="none"></div>
+						<div id="<%= video.id %>" class="fb-like" data-href="<%= video.shareurl%>" data-layout="button" data-action="like" data-ref="test" data-show-faces="true" data-share="true" data-count="none"></div>
 
 
 						<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-count="none" data-url="<%= video.shareurl%>">Tweet</a>					
@@ -71,7 +71,7 @@
 		</div>
 	</div>
 	<% if @videos.count > 8 %>
-		<div class="centerofpage" style="top:741px; width:848px;font-family: 'hitchcock';font-size: 22px;color: yellow;text-align: center;">	
+		<div class="centerofpage" style="top:752px; width:848px;font-family: 'hitchcock';font-size: 16px;color: yellow;text-align: center;">	
 			<p style="font-family:'hitchcock'">SCROLL TO LOAD MORE</p>
 		</div>
 	<% end %>
@@ -90,13 +90,17 @@
 
 	</div>
 <% else %> 
-	<div class="centerofpage" style="width:400px;top:235px;">
+	<div class="centerofpage" style="width:400px;top:235px;text-align: center;">
 		<p style="text-align:center;font-family:'hitchcock';font-size:41px;color:white;margin-top:153px">
 			SORRY!
 		</p>
 		<p style="text-align:center;font-family:'TradeGothic';font-size:30px;color:white;margin-top: -21px;">
 			Your Search didn't return any results
 		</p>
+
+		<a href="/videos">
+			<%= image_tag "returntovideos.png" %>
+		</a>
 	</div>
 <% end %>
 
@@ -201,7 +205,7 @@
 	$('.scrollable').perfectScrollbar();
 
  	$(window).bind("load", function() {
-       $.getScript('js/social.js', function() {});
+       $.getScript('assets/social.js', function() {});
     });
 </script>
 

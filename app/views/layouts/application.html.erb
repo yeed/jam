@@ -12,20 +12,26 @@
 				<div id="howtowin" style="display:none">
 					<div id="data3" style="width:868px;height:546px">
 				  		<%= image_tag "popupframe_big.png", :style => "position:absolute" %>
-				  		<div style="width: 626px;height: 325px;padding-top: 81px;color: black;z-index: 60;position: absolute;padding-left: 51px;">
-				  			<p class="popupheader" style="margin:0px 0px 10px 0px">SAVE YOUR PARENTS A PILE OF CASH ALL THEY HAVE TO DO IS DANCE.</p>
+				  		<div style="width: 646px;height: 325px;padding-top: 81px;color: black;z-index: 60;position: absolute;padding-left: 51px;">
+				  			<p class="popupheader" style="margin:0px 0px 29px 0px;">SAVE YOUR PARENTS A PILE OF CASH. ALL THEY HAVE TO DO IS DANCE.</p>
 			  				
+			  				<div style="margin-top:5px;height: 74px;">
 		  					<%= image_tag "1.jpg", :style => "padding-left: 38px;padding-right: 27px;float: left;" %>
 		  					<p class="popupheader" style="color:Black;text-align:left;margin: 0;float: left;">FILL 'EM<br/>
 		  					<span style="margin: 0;float: left;font-family:'TradeGothic';font-size: 17px;width: 506px;">Submit one or more Vine or Instagram videos of your parents cutting a rug. The funnier the better, but keep it clean.</span></p>
+		  					</div>
 
+		  					<div style="margin-top:5px;height: 74px;">
 		  					<%= image_tag "2.jpg", :style => "padding-left: 38px;padding-right: 27px;float: left;" %>
 		  					<p class="popupheader" style="color:Black;text-align:left;margin: 0;float: left;">TAG IT</p>
-		  					<p style="margin: 0;float: left;font-family:'TradeGothic';font-size: 17px;width: 506px;">Use hashtag <span>#JAM25KENTRY</span> to enter your vid then share it with friends. Jam speaks will be given away each week.</p>
+		  					<p style="margin: 0;float: left;font-family:'TradeGothic';font-size: 17px;width: 506px;">Use hashtag <span>#Jam25kentry</span> to enter your vid then share it with friends. Jam speakers will be given away each week.</p>
+		  					</div>
 
+		  					<div style="margin-top:5px;height: 74px;">
 		  					<%= image_tag "3.jpg", :style => "padding-left: 38px;padding-right: 27px;float: left;" %>
 		  					<p class="popupheader" style="color:Black;text-align:left;margin: 0;float: left;">THE BIG MONEY</p>
 		  					<p style="margin: 0;float: left;font-family:'TradeGothic';font-size: 17px;width: 506px;">Come back August 22 to help us vote on the top 3 videos. The $25K scholarship winner will be announced in September.</p>
+		  					</div>
 
 				  		</div>
 					</div>
@@ -52,7 +58,7 @@
 		<div class="footer">
 			<div class="footercontainer">
 				<div class="shopbtn">
-					<a href="http://www.jamaudio.com/products">
+					<a href="http://www.jamaudio.com/products?utm_source=Jam%20Contest%20Landing%20Page&utm_medium=contest&utm_campaign=BTS%20Contest">
 					<%= image_tag "shop_btn.png", :style => "margin-top: -38px;z-index: 3;position: relative;" %>
 					</a>
 				</div>
@@ -67,6 +73,7 @@
 		</div>
 
 		<script>
+
 			var colorOfrightside = "<%= @canvascolor %>"; 
 			var c=document.getElementById("myCanvas");
 			var ctx=c.getContext("2d");
