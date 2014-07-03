@@ -53,7 +53,7 @@ class HomeController < ApplicationController
 
 		
 
-		uri = URI.parse("https://api.instagram.com/v1/tags/dance/media/recent?access_token=201508105.1fb234f.23f267ecdf4d409980c2d4163a3e3b4e&max_tag_id=1402827536318607")
+		uri = URI.parse("https://api.instagram.com/v1/tags/Jam25kentry/media/recent?access_token=201508105.1fb234f.23f267ecdf4d409980c2d4163a3e3b4e&max_tag_id=1402827536318607")
 		http = Net::HTTP.new(uri.host, uri.port)
 		http.use_ssl = true
 		http.verify_mode = OpenSSL::SSL::VERIFY_NONE
@@ -121,7 +121,7 @@ class HomeController < ApplicationController
 		@leftsidebgcolor = "yellow"
 		@rightsidebgcolor = "yellow"
 
-		uri = URI.parse("https://api.vineapp.com/timelines/tags/dance")
+		uri = URI.parse("https://api.vineapp.com/timelines/tags/Jam25kentry")
 		http = Net::HTTP.new(uri.host, uri.port)
 		http.use_ssl = true
 		http.verify_mode = OpenSSL::SSL::VERIFY_NONE
