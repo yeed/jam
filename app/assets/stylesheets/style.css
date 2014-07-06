@@ -1,13 +1,13 @@
 html, body 
-{margin:0px;background-color:black;font-family: 'TradeGothic';}
+{margin:0px;font-family: 'TradeGothic';background-color:black}
 .container
-{position:relative}
+{position:relative;width:1145px;margin:auto;}
 .footer
 {height:150px; background-color:Black}
 .footercontainer
-{width: 1134px;;margin: auto;padding-top: 19px;text-align: center;}
+{width: 1145px;;margin: auto;padding-top: 19px;text-align: center;}
 .content
-{width:50%;  height:800px; text-align: center;margin-bottom:20px;}
+{width:50%;  height:800px; text-align: center}
 .fltleft
 {float:left;}
 .fltright
@@ -130,4 +130,12 @@ img.twitter {
 .push 
 {
     height: 155px;
+}
+
+#background {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 50%;
+    height: 800px;
 }
