@@ -3,9 +3,9 @@ html, body
 .container
 {position:relative;width:1145px;margin:auto;}
 .footer
-{height:150px; background-color:Black}
+{height:150px; background-color:Black;position:relative}
 .footercontainer
-{width: 1145px;;margin: auto;padding-top: 19px;text-align: center;}
+{width: 995px;;margin: auto;padding-top: 19px;text-align: center;}
 .content
 {width:50%;  height:800px; text-align: center}
 .fltleft
