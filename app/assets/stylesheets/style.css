@@ -138,3 +138,23 @@ img.twitter {
     width: 50%;
     height: 800px;
 }
+
+#right_button_div
+{
+    background-image:url('sweet_up.png');
+    background-repeat: no-repeat;
+}
+#right_button_div:active {
+    background-image:url('sweet_down.png');
+    background-repeat: no-repeat;
+}
+
+#left_button_div
+{
+    background-image:url('sweet_up.png');
+    background-repeat: no-repeat;
+}
+#left_button_div:active {
+    background-image:url('sweet_down.png');
+    background-repeat: no-repeat;
+}
