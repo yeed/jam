@@ -100,12 +100,54 @@
 	<input type="text" id="winner" name="winner" value="" />
 </form>
 
-<script type="text/javascript">
+<script>
 
 	var test = '<%= current_user %>';
 	var firstvideo = "<%= @firstvideo.id %>";
 	var secondvideo = "<%= @secondvideo.id %>";
+
+	$(document).ready(function() {
+
+		$("a.fancybox").fancybox({closeBtn: false});
+		$("a.fancybox2").fancybox();
+
+		$("#right_button_div").mousedown(function(){
+			$("#right_btn").attr("src", "assets/sweet_down.png");
+		});
+
+		$("#right_button_div").mouseup(function(){
+			$("#right_btn").attr("src", "assets/sweet_up.png");
+			formSubmit(secondvideo);
+		});
+
+		$("#left_button_div").mousedown(function(){
+			$("#left_btn").attr("src", "assets/sweet_down.png");
+		});
+
+		$("#left_button_div").mouseup(function(){
+			$("#left_btn").attr("src", "assets/sweet_up.png");
+			formSubmit(firstvideo);
+		});
+
+		$( "#viewcontrol" ).draggable(
+	    	{ 
+	    		axis: "x", 
+	    		grid: [ 200, 0 ], 
+	    		containment: "parent",
+	    		stop: function() 
+	    		{
+	    			var position = $('#viewcontrol').css('left');
+			        
+			        if (position == "100px")
+			        	location = "videos";
+		      	}
+	    	});
+
+		$('#viewcontrol').css('left', '-100px')
+
+	});
 	
+
 	if (!test)
 	{
 		$(window).bind("load", function() {
@@ -150,50 +192,9 @@
 		x.muted = true;
 	}
 
-	$(document).ready(function() {
-		$("a.fancybox").fancybox({closeBtn: false});
-		$("a.fancybox2").fancybox();
-
-		$("#right_button_div").mousedown(function(){
-			$("#right_btn").attr("src", "assets/sweet_down.png");
-		});
-
-		$("#right_button_div").mouseup(function(){
-			$("#right_btn").attr("src", "assets/sweet_up.png");
-			formSubmit(secondvideo);
-		});
-
-		$("#left_button_div").mousedown(function(){
-			$("#left_btn").attr("src", "assets/sweet_down.png");
-		});
-
-		$("#left_button_div").mouseup(function(){
-			$("#left_btn").attr("src", "assets/sweet_up.png");
-			formSubmit(firstvideo);
-		});
-	});
-
 	function ViewAll()
 	{
 		location = "videos";
 	}
 
-
-	$(function() {
-	    $( "#viewcontrol" ).draggable(
-	    	{ 
-	    		axis: "x", 
-	    		grid: [ 200, 0 ], 
-	    		containment: "parent",
-	    		stop: function() 
-	    		{
-	    			var position = $('#viewcontrol').css('left');
-			        
-			        if (position == "100px")
-			        	location = "videos";
-		      	}
-	    	});
-	});
-	
-	$('#viewcontrol').css('left', '-100px')
 </script>
