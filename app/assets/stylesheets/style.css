@@ -53,7 +53,7 @@ html, body
 .centerofpage
 {position:absolute; margin-left: auto;margin-right: auto;left: 0;right: 0;}
 .youpassbtn
-{width: 255px;height: 74px;margin-top: 47px;margin-left: 32px;cursor:url('bigcursor.gif') 60 0, auto;background-image:url('youpass_btn.png');position: absolute;}
+{width: 255px;height: 74px;margin-top: 47px;margin-left: 32px;cursor:url('bigcursor.gif') 60 0, auto;position: absolute;}
 video {cursor:url('bigcursor.gif') 60 0, auto;}
 .shopbtn
 {float:left;width:215px;cursor:pointer;}
@@ -104,7 +104,6 @@ video {cursor:url('bigcursor.gif') 60 0, auto;}
 .fb_edge_widget_with_comment span.fb_edge_comment_widget iframe.fb_ltr {
     display: none !important;
 }
-
 img.facebook {
     width: 29px;
     height: 29px;

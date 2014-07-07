@@ -56,6 +56,7 @@
 	<% end %>
 
 	<script type="text/javascript">
+
 		function ViewAll()
 		{
 			location = "videos";
@@ -95,7 +96,11 @@
 			</video>
 		</div>
 		
-		<div class="youpassbtn" onclick="formSubmit(<%= @firstvideo.id %>)"></div>	
+		<div id="left_button_div" class="youpassbtn">
+			<img id="left_btn" src="assets/sweet_up.png"/>
+		</div>
+
+
 	</div>
 <% end %>
 
@@ -111,7 +116,13 @@
 			  Your browser does not support the video tag.
 			</video>
 		</div>
-		<div class="youpassbtn" style="margin-left: 182px;" onclick="formSubmit(<%= @firstvideo.id %>)"></div>	
+
+		<div id="right_button_div" class="youpassbtn" style="margin-left: 182px;">
+			<img id="right_btn" src="assets/sweet_up.png"/>
+		</div>	
+
+
+
 	</div>
 <% end %>
 
@@ -166,9 +177,34 @@
 		x.muted = true;
 	}
 
+	var firstvideo = "<%= @firstvideo.id %>";
+	var secondvideo = "<%= @secondvideo.id %>";
+
 	$(document).ready(function() {
 		$("a.fancybox").fancybox({closeBtn: false});
 		$("a.fancybox2").fancybox();
+
+		$("#right_button_div").mousedown(function(){
+			$("#right_btn").attr("src", "assets/sweet_down.png");
+		});
+
+		$("#right_button_div").mouseup(function(){
+			$("#right_btn").attr("src", "assets/sweet_up.png");
+			formSubmit(firstvideo);
+		});
+
+		$("#left_button_div").mousedown(function(){
+			$("#left_btn").attr("src", "assets/sweet_down.png");
+		});
+
+		$("#left_button_div").mouseup(function(){
+			$("#left_btn").attr("src", "assets/sweet_up.png");
+			formSubmit(secondvideo);
+		});
 	});
+
+
+	
+
 
 </script>
