@@ -50,40 +50,10 @@
 
 	<div style="width: 75px;height: 54px;background-color: transparent;position: relative;margin-right: 304px;float: right;margin-top: -63px;;cursor:pointer" onclick="ViewAll()"> </div>
 
-
 	<% else %>
 		<div style="margin-top: 167px;"></div>
 	<% end %>
 
-	<script type="text/javascript">
-
-		function ViewAll()
-		{
-			location = "videos";
-		}
-
-
-		$(function() {
-		    $( "#viewcontrol" ).draggable(
-		    	{ 
-		    		axis: "x", 
-		    		grid: [ 200, 0 ], 
-		    		containment: "parent",
-		    		stop: function() 
-		    		{
-		    			var position = $('#viewcontrol').css('left');
-				        
-				        if (position == "100px")
-				        	location = "videos";
-			      	}
-		    	});
-		});
-		
-		$('#viewcontrol').css('left', '-100px')
-	</script>
-
-
-	
 	<div class="fltright">
 		<p style="text-align:left;margin-top:82px;font-weight:bold">
 			<%= @firstvideo.name %>
@@ -130,9 +100,12 @@
 	<input type="text" id="winner" name="winner" value="" />
 </form>
 
-<script>
+<script type="text/javascript">
 
 	var test = '<%= current_user %>';
+	var firstvideo = "<%= @firstvideo.id %>";
+	var secondvideo = "<%= @secondvideo.id %>";
+	
 	if (!test)
 	{
 		$(window).bind("load", function() {
@@ -177,9 +150,6 @@
 		x.muted = true;
 	}
 
-	var firstvideo = "<%= @firstvideo.id %>";
-	var secondvideo = "<%= @secondvideo.id %>";
-
 	$(document).ready(function() {
 		$("a.fancybox").fancybox({closeBtn: false});
 		$("a.fancybox2").fancybox();
@@ -203,8 +173,27 @@
 		});
 	});
 
+	function ViewAll()
+	{
+		location = "videos";
+	}
 
+
+	$(function() {
+	    $( "#viewcontrol" ).draggable(
+	    	{ 
+	    		axis: "x", 
+	    		grid: [ 200, 0 ], 
+	    		containment: "parent",
+	    		stop: function() 
+	    		{
+	    			var position = $('#viewcontrol').css('left');
+			        
+			        if (position == "100px")
+			        	location = "videos";
+		      	}
+	    	});
+	});
 	
-
-
+	$('#viewcontrol').css('left', '-100px')
 </script>
