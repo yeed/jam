@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
 	protect_from_forgery except: :index
-
+	include HomeHelper
 	def single
 
 		@leftsidebgcolor = "orange"
@@ -15,9 +15,16 @@ class HomeController < ApplicationController
 	end
 
 	def index
+
+
+		view_context.InitInstagramVideos
+		view_context.InitVineVideos
+
 		@leftsidebgcolor = "blue"
 		@rightsidebgcolor = "pink"
 		@canvascolor = "#db438f"
+
+
 
 		offset = rand(Video.count)
 		offset2 = rand(Video.count)
@@ -113,54 +120,7 @@ class HomeController < ApplicationController
 	end
 
 	def initvinevideos
-		require "net/https"
-		require "uri"
-		require 'json'
-
-
-		@leftsidebgcolor = "yellow"
-		@rightsidebgcolor = "yellow"
-
-		uri = URI.parse("https://api.vineapp.com/timelines/tags/Jam25kentry")
-		http = Net::HTTP.new(uri.host, uri.port)
-		http.use_ssl = true
-		http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-
-		request = Net::HTTP::Get.new(uri.request_uri)
-
-		response = http.request(request)
-		puts response.body
-
-		hash = JSON.parse response.body
 		
-
-		@text = ""
-
-		hash['data']['records'].each do |child|
-
-			if Video.exists?(:video_id => child['postId'].to_s)
-				@text << "Video Kaydedilmis :(\n\n"
-			else
-				@text << 'Video Url: ' << child['postId'].to_s << "\n"
-				@text << 'Video Url: ' << child['videoUrl'] << "\n"
-				@text << 'Video Ismi: ' << child['description'] << "\n"
-				@text << 'Video Image Url: ' << child['thumbnailUrl'] << "\n"
-				@text << 'Share Url: ' << child['shareUrl'] << "\n"
-				@text << 'User Name: ' << child['username'] << "\n\n\n"
-
-				@video = Video.new
-
-				@video.name = child['username']
-				@video.description = child['description']
-				@video.url = child['videoUrl']
-				@video.thumbnail_image_url = child['thumbnailUrl']
-				@video.video_id = child['postId'].to_s
-				@video.view_count = 0
-				@video.shareurl = child['shareUrl']
-
-				@video.save
-			end
-		end
 	end
 end
 
