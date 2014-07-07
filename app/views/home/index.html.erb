@@ -111,23 +111,7 @@
 		$("a.fancybox").fancybox({closeBtn: false});
 		$("a.fancybox2").fancybox();
 
-		$("#right_button_div").mousedown(function(){
-			$("#right_btn").attr("src", "assets/sweet_down.png");
-		});
-
-		$("#right_button_div").mouseup(function(){
-			$("#right_btn").attr("src", "assets/sweet_up.png");
-			formSubmit(secondvideo);
-		});
-
-		$("#left_button_div").mousedown(function(){
-			$("#left_btn").attr("src", "assets/sweet_down.png");
-		});
-
-		$("#left_button_div").mouseup(function(){
-			$("#left_btn").attr("src", "assets/sweet_up.png");
-			formSubmit(firstvideo);
-		});
+		
 
 		$( "#viewcontrol" ).draggable(
 	    	{ 
@@ -196,5 +180,27 @@
 	{
 		location = "videos";
 	}
+
+
+	$(window).bind("load", function() {
+		$("#right_button_div").mousedown(function(){
+				$("#right_btn").attr("src", "assets/sweet_down.png");
+			});
+
+			$("#right_button_div").mouseup(function(){
+				$("#right_btn").attr("src", "assets/sweet_up.png");
+				formSubmit(secondvideo);
+			});
+
+			$("#left_button_div").mousedown(function(){
+				$("#left_btn").attr("src", "assets/sweet_down.png");
+			});
+
+			$("#left_button_div").mouseup(function(){
+				$("#left_btn").attr("src", "assets/sweet_up.png");
+				formSubmit(firstvideo);
+			});
+
+		});
 
 </script>
