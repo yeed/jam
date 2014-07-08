@@ -104,12 +104,14 @@
 	var test = '<%= current_user %>';
 	var firstvideourl = '<%= @firstvideo.url %>';
 	var secondvideourl = '<%= @secondvideo.url %>';
-
+	var firstvideoimage = '<%= @firstvideo.thumbnail_image_url %>';
+	var secondvideoimage = '<%= @secondvideo.thumbnail_image_url %>';
 
 	$(document).ready(function() {
 
 		jwplayer("video_left").setup({
 		        file: firstvideourl,
+		        image: firstvideoimage,
 		        width: 267,
 		        height: 267,
 		        autostart: false,
@@ -119,6 +121,7 @@
 
 		jwplayer("video_right").setup({
 		        file: secondvideourl,
+		        image: secondvideoimage,
 		        width: 267,
 		        height: 267,
 		        autostart: false,
@@ -130,7 +133,15 @@
 
 	$(document).ready(function() {
 
-		$("a.fancybox").fancybox({closeBtn: false});
+		$("a.fancybox").fancybox({
+			closeBtn: false,
+			afterClose: function() {
+				jwplayer('video_left').play();
+				jwplayer('video_right').play(); 
+
+			}
+		});
+
 		$("a.fancybox2").fancybox();
 
 		$( "#viewcontrol" ).draggable(
@@ -167,9 +178,6 @@
 		        events: {
 		            onComplete: function() {
 		                $.fancybox.close();
-		                jwplayer('video_left').play();
-						jwplayer('video_right').play(); 
-
 		            }
 		        }
 		    });

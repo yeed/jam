@@ -77,7 +77,6 @@ video {cursor:url('bigcursor.gif') 60 0, auto;}
 {background-color: White!important;border-radius:0px!important;}
 .videopopup .fancybox-skin 
 {background-color: #4ff28c!important;border-radius:0px!important;}
-
 @font-face {
     font-family: 'jam_fontregular';
     src: url('jamfont-webfont.eot');
@@ -87,9 +86,7 @@ video {cursor:url('bigcursor.gif') 60 0, auto;}
          url('jamfont-webfont.svg#jam_fontregular') format('svg');
     font-weight: normal;
     font-style: normal;
-
 }
-
 .searchbox
 {float: left;margin-left: 309px;margin-top: 40px;}
 .searchbox input[type="text"]
