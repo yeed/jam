@@ -77,7 +77,19 @@ video {cursor:url('bigcursor.gif') 60 0, auto;}
 {background-color: White!important;border-radius:0px!important;}
 .videopopup .fancybox-skin 
 {background-color: #4ff28c!important;border-radius:0px!important;}
-@font-face{font-family: 'hitchcock';src: url('jamfont.ttf') format('truetype');font-weight: normal;font-style: normal;}
+
+@font-face {
+    font-family: 'jam_fontregular';
+    src: url('jamfont-webfont.eot');
+    src: url('jamfont-webfont.eot?#iefix') format('embedded-opentype'),
+         url('jamfont-webfont.woff') format('woff'),
+         url('jamfont-webfont.ttf') format('truetype'),
+         url('jamfont-webfont.svg#jam_fontregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 .searchbox
 {float: left;margin-left: 309px;margin-top: 40px;}
 .searchbox input[type="text"]
@@ -125,7 +137,7 @@ img.twitter {
     background: url('socialmedia.png') 68px 0;
     margin-left:10px;
 }
-.popupheader{font-family:'hitchcock';color:#f2944f;font-size:24px;color:#f2944f;text-align:center;}
+.popupheader{font-family:'jam_fontregular';color:#f2944f;font-size:24px;color:#f2944f;text-align:center;}
 
 .push 
 {

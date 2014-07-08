@@ -3,15 +3,17 @@
 	<%= image_tag "or.png" %>
 	<%= @video %>
 
+
 	<a href="#data" class="fancybox" id="jasonlink" style="display:none"></a>
 
 	<div id="jasonpopup" style="display:none">
-		<div id="data" style="width:596px;height:406px;text-align:center">
-			<video style="border:solid 8px #12ceda" src="http://www.krltechnologies.com/ddmmvid.mov" class="video" id="jasonvideo" width="568" height="320" controls>
-			</video>
+		<div id="data" style="width:595px;height:420px;text-align:center">
+
+			<div id="myElement"></div>
+
 			<br/>
 			<%= link_to("/auth/facebook", :id => "sign_in") do %>
-		  		<%= image_tag "fblike.png", :style => "margin-left: -88px;;position:absolute" %>
+		  		<%= image_tag "fblike.png"  %>
 			<% end %>
 		</div>
 		
@@ -59,11 +61,11 @@
 			<%= @firstvideo.name %>
 		</p>
 		<div class="videoframe bgcolororange shadowblue" style="margin-right:150px;">
-			<video id="video_left" width="267" onmouseover="UnMute(this)" onmouseout="Mute(this)" height="267" controls muted loop>
-			  <source src="<%= @firstvideo.url %>" type="video/mp4">
 
-			  Your browser does not support the video tag.
-			</video>
+			<div style="margin-left:20px;padding-top:20px" onmouseover="jwplayer('video_left').setMute(false);" onmouseout="jwplayer('video_left').setMute(true);">
+				<div id="video_left"></div> 
+			</div>
+
 		</div>
 		
 		<div id="left_button_div" class="youpassbtn" onclick="formSubmit(<%= @firstvideo.id %>)"></div>	
@@ -78,14 +80,17 @@
 		<p style="text-align:left;margin-top:250px;margin-left:150px;font-weight:bold">
 			<%= @secondvideo.name %>
 		</p>
-		<div class="videoframe bgcolorgreen shadowpink" style="margin-left:150px;">
-			<video id="video_right" width="267" onmouseover="UnMute(this)" onmouseout="Mute(this)" height="267" controls muted loop>
-			  <source src="<%= @secondvideo.url %>" type="video/mp4">
-			  Your browser does not support the video tag.
-			</video>
+
+		<div class="videoframe bgcolororange shadowpink" style="margin-left:150px">
+
+			<div style="margin-left:20px;padding-top:20px" onmouseover="jwplayer('video_right').setMute(false);" onmouseout="jwplayer('video_right').setMute(true);">
+				<div id="video_right"></div> 
+			</div>
+
 		</div>
 
 		<div id="right_button_div" class="youpassbtn" style="margin-left: 182px;" onclick="formSubmit(<%= @secondvideo.id %>)"></div>	
+
 
 	</div>
 <% end %>
@@ -97,14 +102,36 @@
 <script>
 
 	var test = '<%= current_user %>';
-	
+	var firstvideourl = '<%= @firstvideo.url %>';
+	var secondvideourl = '<%= @secondvideo.url %>';
+
+
+	$(document).ready(function() {
+
+		jwplayer("video_left").setup({
+		        file: firstvideourl,
+		        width: 267,
+		        height: 267,
+		        autostart: false,
+		        repeat: true,
+		        mute: true,
+		    });
+
+		jwplayer("video_right").setup({
+		        file: secondvideourl,
+		        width: 267,
+		        height: 267,
+		        autostart: false,
+		        repeat: true,
+		        mute: true,
+		    });
+
+	});
 
 	$(document).ready(function() {
 
 		$("a.fancybox").fancybox({closeBtn: false});
 		$("a.fancybox2").fancybox();
-
-		
 
 		$( "#viewcontrol" ).draggable(
 	    	{ 
@@ -121,30 +148,44 @@
 	    	});
 
 		$('#viewcontrol').css('left', '-100px')
-
+		
 	});
-	
 
 	if (!test)
 	{
 		$(window).bind("load", function() {
 			document.getElementById('jasonlink').click();
-			document.getElementById('jasonvideo').play();
-			document.getElementById('jasonvideo').onended = function(e) {
-				$.fancybox.close();
-				document.getElementById('video_left').play();
-				document.getElementById('video_right').play();
-			};
+
+
+			jwplayer("myElement").setup({
+		        file: "http://youtu.be/kL8KTS_Z8jY",
+		        image: "assets/firstvideo.jpg",
+		        width: 568,
+		        height: 320,
+		        autostart: true,
+		        mute: false,
+		        events: {
+		            onComplete: function() {
+		                $.fancybox.close();
+		                jwplayer('video_left').play();
+						jwplayer('video_right').play(); 
+
+		            }
+		        }
+		    });
 
 		});
 	}
 	else
 	{
 		$(window).bind("load", function() {
-			document.getElementById('video_left').play();
-			document.getElementById('video_right').play();
+			jwplayer('video_left').play();
+			jwplayer('video_right').play(); 
 		});
 	}
+	
+
+	
 
 	function formSubmit(x)
 	{
@@ -159,20 +200,11 @@
 		}
 	}
 
-	function UnMute(x)
-	{
-		x.muted = false;
-	}
-
-	function Mute(x)
-	{
-		x.muted = true;
-	}
-
 	function ViewAll()
 	{
 		location = "videos";
 	}
+
 
 
 

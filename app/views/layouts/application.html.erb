@@ -5,8 +5,18 @@
 	  <%= stylesheet_link_tag    "application", :media => "all" %>
 	  <%= javascript_include_tag "application" %>
 	  <%= csrf_meta_tags %>
+	  <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+	  <script src="http://jwpsrv.com/library/_vd5GAa9EeSoUiIACtqXBA.js"></script>
+
+	  
+
 	</head>
 	<body>
+
+		<!--[if IE]>
+			<style>
+			</style>
+	  	<![endif]-->
 		<div class="bgcolor<%= @rightsidebgcolor %>" style="height: 800px">
 		<div id="background" class="bgcolor<%= @leftsidebgcolor %>"></div>
 		<div class="container">
@@ -27,7 +37,7 @@
 		  					<div style="margin-top:5px;height: 74px;">
 		  					<%= image_tag "2.jpg", :style => "padding-left: 38px;padding-right: 27px;float: left;" %>
 		  					<p class="popupheader" style="color:Black;text-align:left;margin: 0;float: left;">TAG IT</p>
-		  					<p style="margin: 0;float: left;font-family:'TradeGothic';font-size: 17px;width: 506px;">Use hashtag <span style="font-weight:bold;font-family:'hitchcock';color:#f2944f;font-size: 15px;">#Jam25kentry</span> to enter your vid then share it with friends. Jam speakers will be given away each week.</p>
+		  					<p style="margin: 0;float: left;font-family:'TradeGothic';font-size: 17px;width: 506px;">Use hashtag <span style="font-weight:bold;font-family:'jam_fontregular';color:#f2944f;font-size: 15px;">#Jam25kentry</span> to enter your vid then share it with friends. Jam speakers will be given away each week.</p>
 		  					</div>
 
 		  					<div style="margin-top:5px;height: 74px;">
@@ -80,18 +90,29 @@
 
 		<script>
 
-			var colorOfrightside = "<%= @canvascolor %>"; 
-			var c=document.getElementById("myCanvas");
-			var ctx=c.getContext("2d");
-			ctx.beginPath();
-			ctx.moveTo(40,0);
-			ctx.lineTo(0,590);
-			ctx.lineTo(40,590);
-			ctx.lineTo(40,0);
-			ctx.strokeStyle = colorOfrightside;
-			ctx.stroke();
-			ctx.fillStyle= colorOfrightside;
-			ctx.fill();
+			
+			var ua = window.navigator.userAgent;
+            var msie = ua.indexOf("MSIE ");
+
+            if (msie > 0)
+			{
+
+			}
+        	else
+        	{
+	    		var colorOfrightside = "<%= @canvascolor %>"; 
+				var c=document.getElementById("myCanvas");
+				var ctx=c.getContext("2d");
+				ctx.beginPath();
+				ctx.moveTo(40,0);
+				ctx.lineTo(0,590);
+				ctx.lineTo(40,590);
+				ctx.lineTo(40,0);
+				ctx.strokeStyle = colorOfrightside;
+				ctx.stroke();
+				ctx.fillStyle= colorOfrightside;
+				ctx.fill();
+			}
 
 			if (navigator.userAgent.indexOf('Firefox') != -1 && parseFloat(navigator.userAgent.substring(navigator.userAgent.indexOf('Firefox') + 8)) >= 3.6){
 				$('#myCanvas').css('margin-top', '-1px')
@@ -118,6 +139,8 @@
 
 			  ga('create', 'UA-52488278-1', 'auto');
 			  ga('send', 'pageview');
+
+
 
 		</script>
 	</body>
