@@ -1,5 +1,6 @@
 html, body 
 {margin:0px;font-family: 'TradeGothic';background-color:black}
+img {text-decoration: none; border: 0px}
 .container
 {position:relative;width:1145px;margin:auto;}
 .footer
