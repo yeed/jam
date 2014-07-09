@@ -1,13 +1,22 @@
 <% if @videos.count > 1 %>
+	<div class="centerofpage" style="top:219px;overflow:hidden;height:521px">
+
+		<%= image_tag "close_btn.png", :style => "margin-left: 66%;position: absolute;display:none; cursor:pointer", :id => "close_btn", :onclick => "close_popup()" %>
+
+		<div class="videopopup" style="background-color: #4FF28C;position: absolute;margin-left: 34%;z-index: 1;width: 360px;height: 443px;margin-top: 30px;display:none;box-shadow:5px 5px 5px rgba(136, 136, 136, 0.49)">
+
+			
+			<div style="padding-top:20px;margin-left:20px;">
+				<div id="myElement"></div>
+			</div>
+
+			<h2 id="videosowner" style="text-align:center;position: absolute;width:360px"></h2>
+		</div>	
+	</div>
+
 	<div class="centerofpage scrollable" style="top:239px;overflow:hidden;height:521px">
+			
 		<div style="width:855px; margin:auto">
-			<div class="videopopup" style="display:none">
-				<div id="data" style="width:430px;height:530px">
-					<%= image_tag "videoholder_bg.png", :style => "position:absolute" %>
-					<iframe id="videoplayer" width="371" height="371" src="" style="position:absolute;margin-top: 15px;margin-left: 15px;"></iframe>
-					<h2 id="videosowner" style="text-align:center;position: absolute;margin-top: 402px;width:402px"></h2>
-				</div>
-			</div>	
 
 			<% if @searchmode == true %>
 			<p style="text-align:left;font-weight:bold;margin:0 0 0 25px;">
@@ -19,7 +28,7 @@
 				<% @videos.each do |video| %>
 					<div class="smallvideoframe bgcolorgreen shadowsmall" style="margin-right:15px;margin-top:15px">
 
-						<a class="fancybox" href="#data" onclick="SetIframe('<%= video.url%>áá<%= video.name%>áá<%= video.id %>')">
+						<a href="javascript:void(0)" onclick="SetIframe('<%= video.url%>áá<%= video.name%>áá<%= video.id %>')">
 							<%= image_tag video.thumbnail_image_url, :style => "width:180px" %>
 						</a>
 						<p><%= video.name[0..20] %></p>
@@ -38,10 +47,15 @@
 				
 				function SetIframe(x)
 				{
+
+
 					$("[id*='clone']").remove();
 
 					var split = x.split('áá');
-					$('#videoplayer').attr('src', split[0]);
+
+					jwplayer("myElement").load([{file:split[0]}]);
+					jwplayer("myElement").play();
+
 					$('#videosowner').html('@'+split[1]);
 
 					var i = 0;
@@ -50,21 +64,50 @@
 				    var clone = original.cloneNode(true); // "deep" clone
 				    
 				    clone.id = "clone" + ++i; // there can only be one element with an ID
-				    clone.style.marginLeft = "153px";
-				    clone.style.marginTop = "460px";
-				    
-			    	$('#data').append(clone);
+				    clone.style.marginLeft = "133px";
+				    clone.style.marginTop = "62px";
+
+				    $('.videopopup').css('display', 'block');
+				    $('#close_btn').css('display', 'block');
+
+			    	$('.videopopup').append(clone);
 
 				}
 
+				function close_popup()
+				{
+					$('.videopopup').css('display', 'none');
+				    $('#close_btn').css('display', 'none');
+				    jwplayer("myElement").stop();
+				}
 				
 				$(document).ready(function() {
-				  $("a.fancybox").fancybox({ 
-				  	afterClose: function() { $('#videoplayer').attr('src', "")	},
-				  	closeBtn: false,
-				  
-				  });
-				});
+					
+			  		jwplayer("myElement").setup({
+				        file: "http://youtu.be/kL8KTS_Z8jY",
+				        width: 320,
+				        height: 320,
+				        autostart: false,
+				        mute: false
+				    });
+
+
+					  $("a.fancybox").fancybox({ 
+					  	closeBtn: false,
+					  	beforeLoad: function(){
+					  		jwplayer("myElement").load([{file:"http://www.youtube.com/watch?v=K5KAc5CoCuk&list=FL3qEwcKVpydHqBCwl7tb_pg"}]);
+					  		jwplayer("myElement").play();
+
+					  	},
+					  	afterClose: function() {
+								
+					  		jwplayer("myElement").stop();
+							
+						}
+					  
+					  });
+
+					});
 
 				</script>
 			</div>
@@ -83,11 +126,23 @@
 			<%= @videos.first.name %>'s Videos
 		</p>
 		<div class="videoframe_big bgcolorgreen shadow" style="height: 418px;">
-			<iframe width="350" height="350" src="<%= @videos.first.url %>"></iframe>
+			<div style="padding-top:20px;margin-left:20px;">
+				<div id="myElement"></div>
+			</div>
 		</div>
 
 		<div class="fb-like" data-href="<%= @videos.first.shareurl%>" data-layout="button" data-action="like" data-show-faces="true" data-share="true" data-count="none" style="top: -35px!important;margin-left: 140px;"></div>
 
+		<script>
+		var thevideo = '<%= @videos.first.url %>';
+			jwplayer("myElement").setup({
+		        file: thevideo,
+		        width: 350,
+		        height: 350,
+		        autostart: true,
+		        mute: false
+		    });
+		</script>
 	</div>
 <% else %> 
 	<div class="centerofpage" style="width:400px;top:235px;text-align: center;">
