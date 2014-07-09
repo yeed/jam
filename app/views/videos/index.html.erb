@@ -92,21 +92,6 @@
 				    });
 
 
-					  $("a.fancybox").fancybox({ 
-					  	closeBtn: false,
-					  	beforeLoad: function(){
-					  		jwplayer("myElement").load([{file:"http://www.youtube.com/watch?v=K5KAc5CoCuk&list=FL3qEwcKVpydHqBCwl7tb_pg"}]);
-					  		jwplayer("myElement").play();
-
-					  	},
-					  	afterClose: function() {
-								
-					  		jwplayer("myElement").stop();
-							
-						}
-					  
-					  });
-
 					});
 
 				</script>
@@ -160,7 +145,7 @@
 <% end %>
 
 		    	
-<% content_for :left_side do %>
+<div class="content bgcolor<%= @leftsidebgcolor %> fltleft">
 
 	<div class="sliderholder" style="margin-top: 102px;">
 		<%= image_tag "slidepick.png", :id => "viewcontrol" %>
@@ -219,10 +204,10 @@
 
 	</script>
 
-<% end %>
+</div>
 
 
-<% content_for :right_side do %>
+<div class="content bgcolor<%= @rightsidebgcolor %> fltright">
 	
 	<div class="searchbox">
 		<input type="text" id="s_box" value="<%= @searchparam %>"/>
@@ -286,7 +271,7 @@
 
 	</script>
 
-<% end %>
+</div>
 
 <script>
 	$('.scrollable').perfectScrollbar();

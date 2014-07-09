@@ -36,7 +36,7 @@
 	</div>
 </div>
 
-<% content_for :left_side do %>
+<div class="content bgcolor<%= @leftsidebgcolor %> fltleft">
 	
 	<div class="socialmedia">
 		
@@ -72,9 +72,9 @@
 
 
 	</div>
-<% end %>
+</div>
 
-<% content_for :right_side do %>
+<div class="content bgcolor<%= @rightsidebgcolor %> fltright">
 
 	<div class="fltleft">
 		<p style="text-align:left;margin-top:250px;margin-left:150px;font-weight:bold">
@@ -93,7 +93,7 @@
 
 
 	</div>
-<% end %>
+</div>
 
 <form id="whopass" accept-charset="UTF-8" action="/home/index" method="post" style="display:none">
 	<input type="text" id="winner" name="winner" value="" />
@@ -107,30 +107,27 @@
 	var firstvideoimage = '<%= @firstvideo.thumbnail_image_url %>';
 	var secondvideoimage = '<%= @secondvideo.thumbnail_image_url %>';
 
-	$(document).ready(function() {
+$(document).ready(function() {
+	jwplayer("video_left").setup({
+	        file: firstvideourl,
+	        image: firstvideoimage,
+	        width: 267,
+	        height: 267,
+	        autostart: false,
+	        repeat: true,
+	        mute: true,
+	    });
 
-		jwplayer("video_left").setup({
-		        file: firstvideourl,
-		        image: firstvideoimage,
-		        width: 267,
-		        height: 267,
-		        autostart: false,
-		        repeat: true,
-		        mute: true,
-		    });
-
-		jwplayer("video_right").setup({
-		        file: secondvideourl,
-		        image: secondvideoimage,
-		        width: 267,
-		        height: 267,
-		        autostart: false,
-		        repeat: true,
-		        mute: true,
-		    });
-
-	});
-
+	jwplayer("video_right").setup({
+	        file: secondvideourl,
+	        image: secondvideoimage,
+	        width: 267,
+	        height: 267,
+	        autostart: false,
+	        repeat: true,
+	        mute: true,
+	    });
+});
 	$(document).ready(function() {
 
 		$("a.fancybox").fancybox({
