@@ -85,6 +85,7 @@
 					
 			  		jwplayer("myElement").setup({
 				        file: "http://youtu.be/kL8KTS_Z8jY",
+				        primary: "flash",
 				        width: 320,
 				        height: 320,
 				        autostart: false,
@@ -122,6 +123,7 @@
 		var thevideo = '<%= @videos.first.url %>';
 			jwplayer("myElement").setup({
 		        file: thevideo,
+		        primary: "flash",
 		        width: 350,
 		        height: 350,
 		        autostart: true,
@@ -145,7 +147,7 @@
 <% end %>
 
 		    	
-<div class="content bgcolor<%= @leftsidebgcolor %> fltleft">
+<% content_for :left_side do %>
 
 	<div class="sliderholder" style="margin-top: 102px;">
 		<%= image_tag "slidepick.png", :id => "viewcontrol" %>
@@ -204,10 +206,10 @@
 
 	</script>
 
-</div>
+<% end %>
 
 
-<div class="content bgcolor<%= @rightsidebgcolor %> fltright">
+<% content_for :right_side do %>
 	
 	<div class="searchbox">
 		<input type="text" id="s_box" value="<%= @searchparam %>"/>
@@ -271,7 +273,7 @@
 
 	</script>
 
-</div>
+<% end %>
 
 <script>
 	$('.scrollable').perfectScrollbar();
