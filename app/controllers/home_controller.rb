@@ -55,6 +55,31 @@ class HomeController < ApplicationController
 
 	def initvideos
 		
+		@leftsidebgcolor = "blue"
+		@rightsidebgcolor = "pink"
+		@canvascolor = "#db438f"
+
+		offset = rand(Video.count)
+		offset2 = rand(Video.count)
+
+		while offset == offset2
+			offset2 = rand(Video.count)
+		end
+
+		@firstvideo = Video.first(:offset => offset)
+		@secondvideo = Video.first(:offset => offset2)
+
+		if params[:winner] != nil
+			winner = Integer(params[:winner])
+
+		    video = Video.find(winner)
+
+		    video.view_count = video.view_count + 1
+		    
+		    video.save
+       
+		    redirect_to :back
+	    end
 	end
 
 	def initvinevideos

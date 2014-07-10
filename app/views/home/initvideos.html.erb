@@ -1,37 +1,219 @@
-<div id="myElement">Loading the player...</div>
-<br>
-<br>
-<br>
-<div id="video_right">Loading the player...</div>
-<br>
-<br>
-<br>
-<div id="video_left">Loading the player...</div>
+<div class="centerofpage" style="width:200px;top:412px;">
 
+    <%= image_tag "or.png" %>
+    <%= @video %>
+
+
+    <a href="#data" class="fancybox" id="jasonlink" style="display:none"></a>
+
+    <div id="jasonpopup" style="display:none">
+        <div id="data" style="width:595px;height:420px;text-align:center">
+
+            <div id="myElement"></div>
+
+            <br/>
+            <%= link_to("/auth/facebook", :id => "sign_in") do %>
+                <%= image_tag "fblike.png"  %>
+            <% end %>
+        </div>
+        
+    </div>
+
+    <a href="#data2" id="fbpopup_click" class="fancybox2" style="display:none"></a>
+
+    <div id="fbpopup" style="display:none">
+        <div id="data2" style="width:568px;height:346px">
+
+            <%= image_tag "popupframe.png", :style => "position:absolute" %>
+
+            <%= link_to("/auth/facebook", :id => "sign_in") do %>
+                <%= image_tag "fblike.png", :style => "margin-left: 188px;margin-top: 100px;position:absolute" %>
+            <% end %>
+
+            
+            <p style="margin-left: 106px;margin-top: 203px;position: absolute;">Make your selection count by liking Jam Audio.</p>
+        </div>
+    </div>
+</div>
+
+<% content_for :left_side do %>
+    
+    <div class="socialmedia">
+        
+        <a href="http://www.facebook.com/jamspeaker"><%= image_tag "transparent.gif", :class => "facebook" %></a>
+        <a href="http://www.twitter.com/jamspeaker"><%= image_tag "transparent.gif", :class => "twitter" %></a>
+        <a href="http://instagram.com/JamAudio"><%= image_tag "transparent.gif", :class => "instagram" %></a>
+    </div>
+
+    <% if current_user %>
+    <div class="sliderholder">
+        <%= image_tag "slidepick.png", :id => "viewcontrol" %>
+    </div>
+
+    <div style="width: 75px;height: 54px;background-color: transparent;position: relative;margin-right: 304px;float: right;margin-top: -63px;;cursor:pointer" onclick="ViewAll()"> </div>
+
+    <% else %>
+        <div style="margin-top: 167px;"></div>
+    <% end %>
+
+    <div class="fltright">
+        <p style="text-align:left;margin-top:82px;font-weight:bold">
+            <%= @firstvideo.name %>
+        </p>
+        <div class="videoframe bgcolororange shadowblue" style="margin-right:150px;">
+
+            <div style="margin-left:20px;padding-top:20px" onmouseover="jwplayer('video_left').setMute(false);" onmouseout="jwplayer('video_left').setMute(true);">
+                <div id="video_left"></div> 
+            </div>
+
+        </div>
+        
+        <div id="left_button_div" class="youpassbtn" onclick="formSubmit(<%= @firstvideo.id %>)"></div> 
+
+
+    </div>
+<% end %>
+
+<% content_for :right_side do %>
+
+    <div class="fltleft">
+        <p style="text-align:left;margin-top:250px;margin-left:150px;font-weight:bold">
+            <%= @secondvideo.name %>
+        </p>
+
+        <div class="videoframe bgcolororange shadowpink" style="margin-left:150px">
+
+            <div style="margin-left:20px;padding-top:20px" onmouseover="jwplayer('video_right').setMute(false);" onmouseout="jwplayer('video_right').setMute(true);">
+                <div id="video_right"></div> 
+            </div>
+
+        </div>
+
+        <div id="right_button_div" class="youpassbtn" style="margin-left: 182px;" onclick="formSubmit(<%= @secondvideo.id %>)"></div>   
+
+
+    </div>
+<% end %>
+
+<form id="whopass" accept-charset="UTF-8" action="/home/index" method="post" style="display:none">
+    <input type="text" id="winner" name="winner" value="" />
+</form>
 
 <script type="text/javascript">
-    jwplayer("myElement").setup({
-        file: "http://scontent-b.cdninstagram.com/hphotos-xfp1/t50.2886-16/10541347_261045304089066_1081587197_n.mp4",
-        autostart: true,
-        width: 640,
-        height: 360
+
+    var test = '<%= current_user %>';
+    var firstvideourl = '<%= @firstvideo.url %>';
+    var secondvideourl = '<%= @secondvideo.url %>';
+    var firstvideoimage = '<%= @firstvideo.thumbnail_image_url %>';
+    var secondvideoimage = '<%= @secondvideo.thumbnail_image_url %>';
+
+    $(document).ready(function() {
+
+        jwplayer("video_left").setup({
+                file: firstvideourl,
+                image: firstvideoimage,
+                width: 267,
+                height: 267,
+                autostart: false,
+                repeat: true,
+                mute: true,
+            });
+
+        
+
+        jwplayer("video_right").setup({
+                file: secondvideourl,
+                image: secondvideoimage,
+                width: 267,
+                height: 267,
+                autostart: false,
+                repeat: true,
+                mute: true,
+            });
+
     });
 
-    jwplayer("video_left").setup({
-        file: "http://scontent-a.cdninstagram.com/hphotos-xap1/t50.2886-16/10538250_657027451056778_2018970093_n.mp4",
-        width: 267,
-        height: 267,
-        autostart: false,
-        repeat: true,
-        mute: true,
+    $(document).ready(function() {
+
+        $("a.fancybox").fancybox({
+            closeBtn: false,
+            afterClose: function() {
+                jwplayer('video_left').play();
+                jwplayer('video_right').play(); 
+
+            }
+        });
+
+        $("a.fancybox2").fancybox();
+
+        $( "#viewcontrol" ).draggable(
+            { 
+                axis: "x", 
+                grid: [ 200, 0 ], 
+                containment: "parent",
+                stop: function() 
+                {
+                    var position = $('#viewcontrol').css('left');
+                    
+                    if (position == "100px")
+                        location = "videos";
+                }
+            });
+
+        $('#viewcontrol').css('left', '-100px')
+        
     });
 
-	jwplayer("video_right").setup({
-        file: "http://scontent-a.cdninstagram.com/hphotos-xfa1/t50.2886-16/10480678_308004032691834_664690555_n.mp4",
-        width: 267,
-        height: 267,
-        autostart: false,
-        repeat: true,
-        mute: true,
-    });
+    if (!test)
+    {
+        $(window).bind("load", function() {
+            document.getElementById('jasonlink').click();
+
+
+            jwplayer("myElement").setup({
+                file: "http://youtu.be/kL8KTS_Z8jY",
+                image: "assets/firstvideo.jpg",
+                width: 568,
+                height: 320,
+                autostart: true,
+                mute: false,
+                events: {
+                    onComplete: function() {
+                        $.fancybox.close();
+                    }
+                }
+            });
+
+        });
+    }
+    else
+    {
+        $(window).bind("load", function() {
+            jwplayer('video_left').play();
+            jwplayer('video_right').play(); 
+        });
+    }
+    
+
+    
+
+    function formSubmit(x)
+    {
+        if (test)
+        {
+            $('#winner').val(x);
+            document.getElementById("whopass").submit();
+        }
+        else
+        {
+            document.getElementById('fbpopup_click').click();
+        }
+    }
+
+    function ViewAll()
+    {
+        location = "videos";
+    }
+
+
 </script>
