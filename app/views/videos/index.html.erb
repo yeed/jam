@@ -3,7 +3,7 @@
 
 		<%= image_tag "close_btn.png", :style => "margin-left: 66%;position: absolute;display:none; cursor:pointer", :id => "close_btn", :onclick => "close_popup()" %>
 
-		<div class="videopopup" style="background-color: #4FF28C;position: absolute;margin-left: 34%;z-index: 1;width: 360px;height: 443px;margin-top: 30px;display:block;box-shadow:5px 5px 5px rgba(136, 136, 136, 0.49)">
+		<div class="videopopup" style="background-color: #4FF28C;position: absolute;margin-left: 34%;z-index: 1;width: 360px;height: 443px;margin-top: 30px;display:none;box-shadow:5px 5px 5px rgba(136, 136, 136, 0.49)">
 
 			
 			<div style="padding-top:20px;margin-left:20px;">
@@ -84,7 +84,7 @@
 				$(document).ready(function() {
 					
 			  		jwplayer("myElement").setup({
-				        file: "http://youtu.be/kL8KTS_Z8jY",
+				        file: "https://videos-vm.jwpsrv.com/bLS9UXL5/videos/9hav9mJH-mnBBh60T.mp4?5c877a8d15f183bb974dcdccb105a79495b4e5e3b1b6e4cf277e6e0c5b99abd39e8b3e7893a8b9f5b86c3d1e0f21fbc0b3aba0c09fa78ce8c9dbca67ba28a6ffb188ddb1dc7ebe4bfa134d8ee4d8f3963619226e4151",
 				        primary: "flash",
 				        width: 320,
 				        height: 320,
