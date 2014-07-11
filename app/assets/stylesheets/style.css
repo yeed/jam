@@ -61,7 +61,7 @@ video {cursor:url('bigcursor.gif') 60 0, auto;}
 .facebookbtn
 {float:right;width:215px;cursor:pointer;}
 .smallvideoframe
-{width:188px; height:241px; text-align:center;float:left;}
+{width:188px; height:241px; text-align:center;float:left;margin-bottom:15px}
 .smallvideoframe img
 {padding-top:4px}
 .videoholder

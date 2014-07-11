@@ -1,0 +1,18 @@
+<h1>Listing videos</h1>
+
+<table style="width:400px">
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @videos.each do |video| %>
+  <tr>
+    <td><%= video.name %></td>
+    <td><%= link_to 'Edit', edit_admin_path(video) %></td>
+  </tr>
+<% end %>
+</table>
+

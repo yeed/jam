@@ -10,6 +10,8 @@ class VideosController < ApplicationController
 			videos = Video.order("videos.created_at DESC")
 		end
 
+		videos = videos.where(ignored: nil)
+
 		@searchmode = false
 
 		if params['search'] != nil
