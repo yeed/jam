@@ -141,6 +141,30 @@
 			}
 	  	});
 
+
+	  	$("a.fancybox2").fancybox({
+		tpl: {
+		  closeBtn: '<div title="Close" id="fb_close_button"></div>'
+		 }
+		});
+
+		$( "#viewcontrol" ).draggable(
+	    	{ 
+	    		axis: "x", 
+	    		grid: [ 200, 0 ], 
+	    		containment: "parent",
+	    		stop: function() 
+	    		{
+	    			var position = $('#viewcontrol').css('left');
+			        
+			        if (position == "100px")
+			        	location = "videos";
+		      	}
+	    	});
+
+		$('#viewcontrol').css('left', '-100px');
+
+
 	});
 
 
@@ -163,27 +187,7 @@
 
 		
 
-		$("a.fancybox2").fancybox({
-			tpl: {
-			  closeBtn: '<div title="Close" id="fb_close_button"></div>'
-			 }
-		});
-
-		$( "#viewcontrol" ).draggable(
-	    	{ 
-	    		axis: "x", 
-	    		grid: [ 200, 0 ], 
-	    		containment: "parent",
-	    		stop: function() 
-	    		{
-	    			var position = $('#viewcontrol').css('left');
-			        
-			        if (position == "100px")
-			        	location = "videos";
-		      	}
-	    	});
-
-		$('#viewcontrol').css('left', '-100px')
+	
 		
 
 	
