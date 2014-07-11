@@ -31,7 +31,7 @@
 			<% end %>
 
 			
-			<p style="margin-left: 106px;margin-top: 203px;position: absolute;">Make your selection count by liking Jam Audio.</p>
+			<p style="margin-left: 133px;margin-top: 203px;position: absolute;">Make your selection count by liking Jam Audio.</p>
 		</div>
 	</div>
 </div>
@@ -133,20 +133,41 @@
 		        mute: true,
 		    });
 
-	});
-
-	$(document).ready(function() {
-
-		$("a.fancybox").fancybox({
-			closeBtn: false,
-			afterClose: function() {
+	    $("a.fancybox3").fancybox({ 
+	  		afterClose: function() {
 				jwplayer('video_left').play();
 				jwplayer('video_right').play(); 
 
 			}
-		});
+	  	});
 
-		$("a.fancybox2").fancybox();
+	});
+
+
+
+
+	if (!test)
+	{
+		$(document).ready(function() {
+			document.getElementById('howtoenter').click();
+		});
+	}
+	else
+	{
+		$(window).bind("load", function() {
+			jwplayer('video_left').play();
+			jwplayer('video_right').play(); 
+		});
+	}
+		
+
+		
+
+		$("a.fancybox2").fancybox({
+			tpl: {
+			  closeBtn: '<div title="Close" id="fb_close_button"></div>'
+			 }
+		});
 
 		$( "#viewcontrol" ).draggable(
 	    	{ 
@@ -164,39 +185,8 @@
 
 		$('#viewcontrol').css('left', '-100px')
 		
-	});
 
-	if (!test)
-	{
-		$(window).bind("load", function() {
-			document.getElementById('jasonlink').click();
-
-
-			jwplayer('myElement').setup({
-                file: '//www.youtube.com/watch?v=kL8KTS_Z8jY',
-		        primary: "flash",
-		        title: 'ddmmvid',
-		        width: 568,
-		        height: 320,
-		        autostart: true,
-		        mute: false,
-		        events: {
-		            onComplete: function() {
-		                $.fancybox.close();
-		            }
-		        }
-		    });
-
-	    });
-
-	}
-	else
-	{
-		$(window).bind("load", function() {
-			jwplayer('video_left').play();
-			jwplayer('video_right').play(); 
-		});
-	}
+	
 	
 
 	

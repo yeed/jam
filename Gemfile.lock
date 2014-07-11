@@ -61,6 +61,7 @@ GEM
     multi_json (1.10.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
+    newrelic_rpm (3.9.0.229)
     oauth2 (0.9.4)
       faraday (>= 0.8, < 0.10)
       jwt (~> 1.0)
@@ -137,6 +138,7 @@ DEPENDENCIES
   fancybox2-rails (~> 0.2.8)
   jquery-rails (~> 3.1.0)
   jquery-ui-rails
+  newrelic_rpm
   omniauth-facebook
   pg
   rails (= 3.2.13)

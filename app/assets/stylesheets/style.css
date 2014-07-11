@@ -110,7 +110,7 @@ video {cursor:url('bigcursor.gif') 60 0, auto;}
 .fb-like {float:left;margin-left: 8px;margin-top: 3px;}
 .twitter-share-button { float:left;margin-left: 5px;margin-top: 3px;}
 .fancybox-skin {background: transparent;box-shadow: none !important;}
-.fancybox-close{background-image: url('fancybox_sprite.png')!important;top: 30px;right: 71px;}
+.fancybox-close{background-image: url('fancybox_sprite.png')!important;top: 30px;right: 129px;}
 .fb_edge_widget_with_comment span.fb_edge_comment_widget iframe.fb_ltr {
     display: none !important;
 }
@@ -167,4 +167,14 @@ img.twitter {
 #left_button_div:active {
     background-image:url('sweet_down.png');
     background-repeat: no-repeat;
+}
+#fb_close_button
+{
+    background-image: url('close_btn_black.png');
+    position: absolute;
+    width: 30px;
+    height: 31px;
+    margin-top: -326px;
+    margin-left: 478px;
+    cursor: pointer;
 }
