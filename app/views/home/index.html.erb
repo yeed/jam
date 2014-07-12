@@ -47,7 +47,7 @@
         <a href="http://instagram.com/JamAudio"><%= image_tag "transparent.gif", :class => "instagram" %></a>
     </div>
 
-    <% unless current_user %>
+    <% if current_user %>
     <div class="sliderholder" style="position:relative">
         <%= image_tag "slidepick.png", :id => "viewcontrol", :style=>"position:relative" %>
     </div>
