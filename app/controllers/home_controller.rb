@@ -15,6 +15,9 @@ class HomeController < ApplicationController
 	end
 
 	def index
+		require 'date'
+		
+		@timestamp = DateTime.now.strftime('%Q')
 
 		InitInstagramVideos()
 		InitVineVideos()
@@ -66,10 +69,20 @@ class HomeController < ApplicationController
 		@rightsidebgcolor = "pink"
 		@canvascolor = "#db438f"
 
+
+
 		offset = rand(Video.count)
 		offset2 = rand(Video.count)
 
-		while offset == offset2
+		while Video.first(:offset => offset).ignored == true
+			offset = rand(Video.count)
+		end
+
+		while offset == offset2 
+			offset2 = rand(Video.count)
+		end
+
+		while Video.first(:offset => offset2).ignored == true || offset2 == offset
 			offset2 = rand(Video.count)
 		end
 

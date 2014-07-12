@@ -8,18 +8,18 @@
 	  <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
 	  <script src="http://jwpsrv.com/library/_vd5GAa9EeSoUiIACtqXBA.js"></script>
 
-	  
-
 	</head>
-	<body>
+	<body style="overflow:hidden">
 
 		<!--[if IE]>
 			<style>
 			</style>
 	  	<![endif]-->
-		<div class="bgcolor<%= @rightsidebgcolor %>" style="height: 800px">
-		<div id="background" class="bgcolor<%= @leftsidebgcolor %>"></div>
-		<div class="container">
+	  	
+		<div id="wrap" class="bgcolor<%= @rightsidebgcolor %>">
+
+		<div id="main">
+			<div id="background" class="bgcolor<%= @leftsidebgcolor %>"></div>
 			<div class="centerofpage" style="width:487px">
 				
 				<div id="howtowin" style="display:none">
@@ -53,13 +53,12 @@
 				</div>
 
 				<%= link_to image_tag('logo.png'), url_for({:controller => 'home', :action => 'index'}) %>
-
-				<canvas id="myCanvas" width="300" height="562" style="margin-left:204px;margin-top: 1px;"></canvas>
+				<canvas id="myCanvas" width="300" height="900" style="margin-left:154px;margin-top: 1px;position:relative"></canvas>
 			</div>
 
 			<%= yield %>
 
-			<div class="content bgcolor<%= @leftsidebgcolor %> fltleft">
+			<div class="content bgcolor<%= @leftsidebgcolor %> fltleft" style="margin-top: -94px;">
 				<%= yield :left_side %>
 			</div>
 
@@ -71,7 +70,7 @@
 
 		<div style="clear:both"></div>
 
-		<div class="footer">
+		<div id="footer">
 			<div class="footercontainer">
 				<div class="shopbtn">
 					<a href="http://www.jamaudio.com/products?utm_source=Jam%20Contest%20Landing%20Page&utm_medium=contest&utm_campaign=BTS%20Contest" target="_blank">
@@ -104,10 +103,10 @@
 				var c=document.getElementById("myCanvas");
 				var ctx=c.getContext("2d");
 				ctx.beginPath();
-				ctx.moveTo(40,0);
-				ctx.lineTo(0,590);
-				ctx.lineTo(40,590);
-				ctx.lineTo(40,0);
+				ctx.moveTo(90,0);
+				ctx.lineTo(0,900);
+				ctx.lineTo(90,900);
+				ctx.lineTo(90,0);
 				ctx.strokeStyle = colorOfrightside;
 				ctx.stroke();
 				ctx.fillStyle= colorOfrightside;

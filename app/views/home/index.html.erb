@@ -1,217 +1,234 @@
-<div class="centerofpage" style="width:200px;top:412px;">
 
-	<%= image_tag "or.png" %>
-	<%= @video %>
+<div class="centerofpage" style="width:200px;top:412px;overflow:hidden">
+
+    <%= image_tag "or.png" %>
+    <%= @video %>
 
 
-	<a href="#data" class="fancybox" id="jasonlink" style="display:none"></a>
+    <a href="#data" class="fancybox" id="jasonlink" style="display:none"></a>
 
-	<div id="jasonpopup" style="display:none">
-		<div id="data" style="width:595px;height:420px;text-align:center">
+    <div id="jasonpopup" style="display:none">
+        <div id="data" style="width:595px;height:420px;text-align:center">
 
-			<div id="myElement"></div>
+            <div id="myElement"></div>
 
-			<br/>
-			<%= link_to("/auth/facebook", :id => "sign_in") do %>
-		  		<%= image_tag "fblike.png"  %>
-			<% end %>
-		</div>
-		
-	</div>
+            <br/>
+            <%= link_to("/auth/facebook", :id => "sign_in") do %>
+                <%= image_tag "fblike.png"  %>
+            <% end %>
+        </div>
+        
+    </div>
 
-	<a href="#data2" id="fbpopup_click" class="fancybox2" style="display:none"></a>
+    <a href="#data2" id="fbpopup_click" class="fancybox2" style="display:none"></a>
 
-	<div id="fbpopup" style="display:none">
-		<div id="data2" style="width:568px;height:346px">
+    <div id="fbpopup" style="display:none">
+        <div id="data2" style="width:568px;height:346px">
 
-	  		<%= image_tag "popupframe.png", :style => "position:absolute" %>
+            <%= image_tag "popupframe.png", :style => "position:absolute" %>
 
-	  		<%= link_to("/auth/facebook", :id => "sign_in") do %>
-		  		<%= image_tag "fblike.png", :style => "margin-left: 188px;margin-top: 100px;position:absolute" %>
-			<% end %>
+            <%= link_to("/auth/facebook", :id => "sign_in") do %>
+                <%= image_tag "fblike.png", :style => "margin-left: 188px;margin-top: 100px;position:absolute" %>
+            <% end %>
 
-			
-			<p style="margin-left: 133px;margin-top: 203px;position: absolute;">Make your selection count by liking Jam Audio.</p>
-		</div>
-	</div>
+            
+            <p style="margin-left: 133px;margin-top: 203px;position: absolute;">Make your selection count by liking Jam Audio.</p>
+        </div>
+    </div>
 </div>
 
+
 <% content_for :left_side do %>
-	
-	<div class="socialmedia">
-		
-		<a href="http://www.facebook.com/jamspeaker"><%= image_tag "transparent.gif", :class => "facebook" %></a>
-		<a href="http://www.twitter.com/jamspeaker"><%= image_tag "transparent.gif", :class => "twitter" %></a>
-		<a href="http://instagram.com/JamAudio"><%= image_tag "transparent.gif", :class => "instagram" %></a>
-	</div>
+    
+    <div class="socialmedia" style="position:relative;">
+        
+        <a href="http://www.facebook.com/jamspeaker"><%= image_tag "transparent.gif", :class => "facebook" %></a>
+        <a href="http://www.twitter.com/jamspeaker"><%= image_tag "transparent.gif", :class => "twitter" %></a>
+        <a href="http://instagram.com/JamAudio"><%= image_tag "transparent.gif", :class => "instagram" %></a>
+    </div>
 
-	<% if current_user %>
-	<div class="sliderholder">
-		<%= image_tag "slidepick.png", :id => "viewcontrol" %>
-	</div>
+    <% unless current_user %>
+    <div class="sliderholder" style="position:relative">
+        <%= image_tag "slidepick.png", :id => "viewcontrol", :style=>"position:relative" %>
+    </div>
 
-	<div style="width: 75px;height: 54px;background-color: transparent;position: relative;margin-right: 304px;float: right;margin-top: -63px;;cursor:pointer" onclick="ViewAll()"> </div>
+    <div style="width: 75px;height: 54px;background-color: transparent;position: relative;margin-right: 304px;float: right;margin-top: -63px;;cursor:pointer" onclick="ViewAll()"> </div>
 
-	<% else %>
-		<div style="margin-top: 167px;"></div>
-	<% end %>
-
-	<div class="fltright">
-		<p style="text-align:left;margin-top:82px;font-weight:bold">
-			<%= @firstvideo.name %>
-		</p>
-		<div class="videoframe bgcolororange shadowblue" style="margin-right:150px;">
-
-			<div style="margin-left:20px;padding-top:20px" onmouseover="jwplayer('video_left').setMute(false);" onmouseout="jwplayer('video_left').setMute(true);">
-				<div id="video_left"></div> 
-			</div>
-
-		</div>
-		
-		<div id="left_button_div" class="youpassbtn" onclick="formSubmit(<%= @firstvideo.id %>)"></div>	
+    <% else %>
+        <div style="margin-top: 167px;"></div>
+    <% end %>
 
 
-	</div>
+   
+
 <% end %>
 
 <% content_for :right_side do %>
 
-	<div class="fltleft">
-		<p style="text-align:left;margin-top:250px;margin-left:150px;font-weight:bold">
-			<%= @secondvideo.name %>
-		</p>
-
-		<div class="videoframe bgcolororange shadowpink" style="margin-left:150px">
-
-			<div style="margin-left:20px;padding-top:20px" onmouseover="jwplayer('video_right').setMute(false);" onmouseout="jwplayer('video_right').setMute(true);">
-				<div id="video_right"></div> 
-			</div>
-
-		</div>
-
-		<div id="right_button_div" class="youpassbtn" style="margin-left: 182px;" onclick="formSubmit(<%= @secondvideo.id %>)"></div>	
-
-
-	</div>
+    
 <% end %>
 
+
+<div id="scroller" class="centerofpage scrollable" style="top:239px;overflow:hidden;height:521px;width: 995px;">
+    <div class="fltleft" style="overflow:hidden;margin-left:50px;height:700px">
+        <p style="text-align:left;font-weight:bold;position:relative">
+            <%= @firstvideo.name %>
+        </p>
+        <div class="videoframe bgcolororange shadowblue " style="position:relative">
+
+            <div style="margin-left:20px;padding-top:20px" onmouseover="jwplayer('video_left').setMute(false);" onmouseout="jwplayer('video_left').setMute(true);">
+                <div id="video_left"></div> 
+            </div>
+
+        </div>
+        
+        <div id="left_button_div" class="youpassbtn" onclick="formSubmit(<%= @firstvideo.id %>)"></div> 
+    </div>
+    <div class="fltright" style="margin-right:50px;">
+        <p style="text-align:left;font-weight:bold">
+            <%= @secondvideo.name %>
+        </p>
+
+        <div class="videoframe bgcolororange shadowpink" >
+
+            <div style="margin-left:20px;padding-top:20px" onmouseover="jwplayer('video_right').setMute(false);" onmouseout="jwplayer('video_right').setMute(true);">
+                <div id="video_right"></div> 
+            </div>
+
+        </div>
+
+        <div id="right_button_div" class="youpassbtn" style="" onclick="formSubmit(<%= @secondvideo.id %>)"></div>   
+
+
+    </div>
+
+
+    </div>
+    </div>
+
+
+
+
+<img src="https://ad.amgdgt.com/ads/?t=ap&px=41949&rnd=<%= @timestamp%>" width="1" height="1" border="0"/>
+
 <form id="whopass" accept-charset="UTF-8" action="/home/index" method="post" style="display:none">
-	<input type="text" id="winner" name="winner" value="" />
+    <input type="text" id="winner" name="winner" value="" />
 </form>
 
 <script>
 
-	var test = '<%= current_user %>';
-	var firstvideourl = '<%= @firstvideo.url %>';
-	var secondvideourl = '<%= @secondvideo.url %>';
-	var firstvideoimage = '<%= @firstvideo.thumbnail_image_url %>';
-	var secondvideoimage = '<%= @secondvideo.thumbnail_image_url %>';
+    var test = '<%= current_user %>';
+    var firstvideourl = '<%= @firstvideo.url %>';
+    var secondvideourl = '<%= @secondvideo.url %>';
+    var firstvideoimage = '<%= @firstvideo.thumbnail_image_url %>';
+    var secondvideoimage = '<%= @secondvideo.thumbnail_image_url %>';
 
-	$(document).ready(function() {
+    $(document).ready(function() {
 
-		jwplayer("video_left").setup({
-		        file: firstvideourl,
-		        image: firstvideoimage,
-		        primary: "flash",
-		        width: 267,
-		        height: 267,
-		        autostart: false,
-		        repeat: true,
-		        mute: true,
-		    });
+        $('.scrollable').perfectScrollbar();
+        jwplayer("video_left").setup({
+                file: firstvideourl,
+                image: firstvideoimage,
+                primary: "flash",
+                width: 267,
+                height: 267,
+                autostart: false,
+                repeat: true,
+                mute: true,
+            });
 
-		
+        
 
-		jwplayer("video_right").setup({
-		        file: secondvideourl,
-		        image: secondvideoimage,
-		        primary: "flash",
-		        width: 267,
-		        height: 267,
-		        autostart: false,
-		        repeat: true,
-		        mute: true,
-		    });
+        jwplayer("video_right").setup({
+                file: secondvideourl,
+                image: secondvideoimage,
+                primary: "flash",
+                width: 267,
+                height: 267,
+                autostart: false,
+                repeat: true,
+                mute: true,
+            });
 
-	    $("a.fancybox3").fancybox({ 
-	  		afterClose: function() {
-				jwplayer('video_left').play();
-				jwplayer('video_right').play(); 
+        $("a.fancybox3").fancybox({ 
+            afterClose: function() {
+                jwplayer('video_left').play();
+                jwplayer('video_right').play(); 
 
-			}
-	  	});
-
-
-	  	$("a.fancybox2").fancybox({
-		tpl: {
-		  closeBtn: '<div title="Close" id="fb_close_button"></div>'
-		 }
-		});
-
-		$( "#viewcontrol" ).draggable(
-	    	{ 
-	    		axis: "x", 
-	    		grid: [ 200, 0 ], 
-	    		containment: "parent",
-	    		stop: function() 
-	    		{
-	    			var position = $('#viewcontrol').css('left');
-			        
-			        if (position == "100px")
-			        	location = "videos";
-		      	}
-	    	});
-
-		$('#viewcontrol').css('left', '-100px');
+            }
+        });
 
 
-	});
+        $("a.fancybox2").fancybox({
+        tpl: {
+          closeBtn: '<div title="Close" id="fb_close_button"></div>'
+         }
+        });
+
+        $( "#viewcontrol" ).draggable(
+            { 
+                axis: "x", 
+                grid: [ 200, 0 ], 
+                containment: "parent",
+                stop: function() 
+                {
+                    var position = $('#viewcontrol').css('left');
+                    
+                    if (position == "100px")
+                        location = "videos";
+                }
+            });
+
+        $('#viewcontrol').css('left', '-100px');
+
+
+    });
 
 
 
 
-	if (!test)
-	{
-		$(document).ready(function() {
-			document.getElementById('howtoenter').click();
-		});
-	}
-	else
-	{
-		$(window).bind("load", function() {
-			jwplayer('video_left').play();
-			jwplayer('video_right').play(); 
-		});
-	}
-		
+    if (!test)
+    {
+        $(document).ready(function() {
+            document.getElementById('howtoenter').click();
+        });
+    }
+    else
+    {
+        $(window).bind("load", function() {
+            jwplayer('video_left').play();
+            jwplayer('video_right').play(); 
+        });
+    }
+        
 
-		
+        
 
-	
-		
+    
+        
 
-	
-	
+    
+    
 
-	
+    
 
-	function formSubmit(x)
-	{
-		if (test)
-		{
-			$('#winner').val(x);
-			document.getElementById("whopass").submit();
-		}
-		else
-		{
-			document.getElementById('fbpopup_click').click();
-		}
-	}
+    function formSubmit(x)
+    {
+        if (test)
+        {
+            $('#winner').val(x);
+            document.getElementById("whopass").submit();
+        }
+        else
+        {
+            document.getElementById('fbpopup_click').click();
+        }
+    }
 
-	function ViewAll()
-	{
-		location = "videos";
-	}
+    function ViewAll()
+    {
+        location = "videos";
+    }
 
 
 

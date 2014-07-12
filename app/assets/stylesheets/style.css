@@ -8,7 +8,7 @@ img {text-decoration: none; border: 0px}
 .footercontainer
 {width: 995px;;margin: auto;padding-top: 19px;text-align: center;}
 .content
-{width:50%;  height:800px; text-align: center}
+{width:50%;  height:100%; text-align: center}
 .fltleft
 {float:left;}
 .fltright
@@ -54,7 +54,7 @@ img {text-decoration: none; border: 0px}
 .centerofpage
 {position:absolute; margin-left: auto;margin-right: auto;left: 0;right: 0;}
 .youpassbtn
-{width: 255px;height: 74px;margin-top: 47px;margin-left: 32px;cursor:url('bigcursor.gif') 60 0, auto;position: absolute;}
+{width: 255px;height: 74px;margin-top: 47px;margin-left: 32px;cursor:url('bigcursor.gif') 60 0, auto;}
 video {cursor:url('bigcursor.gif') 60 0, auto;}
 .shopbtn
 {float:left;width:215px;cursor:pointer;}
@@ -146,7 +146,7 @@ img.twitter {
     top: 0px;
     left: 0px;
     width: 50%;
-    height: 800px;
+    height: 100%;
 }
 
 #right_button_div
@@ -177,4 +177,30 @@ img.twitter {
     margin-top: -326px;
     margin-left: 478px;
     cursor: pointer;
+}
+
+
+
+
+html, body {height: 100%;}
+
+#wrap {min-height: 100%;}
+
+#main {overflow:auto;
+    padding-bottom: 94px;
+    overflow-x:hidden;}  /* must be same height as the footer */
+
+#footer {position: relative;
+    margin-top: -94px; /* negative value of footer height */
+    height: 94px;
+    background-color: Black;
+    clear:both;} 
+
+/*Opera Fix*/
+body:before {
+    content:"";
+    height:100%;
+    float:left;
+    width:0;
+    margin-top:-32767px;/
 }

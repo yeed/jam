@@ -1,10 +1,8 @@
 <% if @videos.count > 1 %>
-	<div class="centerofpage" style="top:219px;overflow:hidden;height:521px">
+	<div class="centerofpage" style="top:140px;overflow:hidden;height:521px;width:375px">
 
-		<%= image_tag "close_btn.png", :style => "margin-left: 66%;position: absolute;display:none; cursor:pointer;z-index: 1;", :id => "close_btn", :onclick => "close_popup()" %>
-
-		<div class="videopopup" style="background-color: #4FF28C;position: absolute;margin-left: 34%;z-index: 1;width: 360px;height: 443px;margin-top: 30px;display:none;box-shadow:5px 5px 5px rgba(136, 136, 136, 0.49)">
-
+		<div class="videopopup" style="background-color: #4FF28C;position: absolute;z-index: 1;height: 438px;width: 360px;margin-top: 48px;display:none;box-shadow:5px 5px 5px rgba(136, 136, 136, 0.49)">
+			<%= image_tag "close_btn.png", :style => "margin-left: 96%;top:-30px;position: absolute;display:none; cursor:pointer;z-index: 1;", :id => "close_btn", :onclick => "close_popup()" %>
 			
 			<div style="padding-top:20px;margin-left:20px;">
 				<div id="myElement"></div>
@@ -14,12 +12,12 @@
 		</div>	
 	</div>
 
-	<div class="centerofpage scrollable" style="top:239px;overflow:hidden;height:521px">
+	<div class="centerofpage scrollable" style="top:239px;overflow:hidden;height:60%">
 			
 		<div style="width:855px; margin:auto">
 
 			<% if @searchmode == true %>
-			<p style="text-align:left;font-weight:bold;margin:0 0 0 25px;">
+			<p style="text-align:left;font-weight:bold;margin:0 0 0 25px;position:relative">
 				<%= @videos.first.name %>'s Videos
 			</p>
 			<% end %>
@@ -153,17 +151,18 @@
 
 		    	
 <% content_for :left_side do %>
+	
+	<div style="margin-top:92px">
+		<div class="sliderholder" style="margin-top: 102px; position:relative">
+			<%= image_tag "slidepick.png", :id => "viewcontrol", :style=>"position:relative"%>
+		</div>
 
-	<div class="sliderholder" style="margin-top: 102px;">
-		<%= image_tag "slidepick.png", :id => "viewcontrol" %>
+		<div style="width: 75px;height: 54px;background-color: transparent;position: relative;margin-right: 485px;float: right;margin-top: -63px;cursor:pointer" onclick="Danceoff()"> </div>
+
+		<% if request.original_url.include? "search" %>
+			<div style="width: 75px;height: 54px;background-color: transparent;position: relative;margin-right: 310px;float: right;margin-top: -63px;cursor:pointer" onclick="ViewAll()"> </div>
+		<% end %>
 	</div>
-
-	<div style="width: 75px;height: 54px;background-color: transparent;position: relative;margin-right: 485px;float: right;margin-top: -63px;cursor:pointer" onclick="Danceoff()"> </div>
-
-	<% if request.original_url.include? "search" %>
-		<div style="width: 75px;height: 54px;background-color: transparent;position: relative;margin-right: 310px;float: right;margin-top: -63px;cursor:pointer" onclick="ViewAll()"> </div>
-	<% end %>
-
 	<script type="text/javascript">
 
 		function Danceoff()
