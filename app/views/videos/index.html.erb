@@ -102,15 +102,12 @@
 			</div>
 		</div>
 	</div>
-	<% if @videos.count > 8 %>
-		<div class="centerofpage" style="top:752px; width:848px;font-family: 'jam_fontregular';font-size: 16px;color: yellow;text-align: center;">	
-			<p style="font-family:'jam_fontregular'">SCROLL TO LOAD MORE</p>
-		</div>
-	<% end %>
+	
 
 <% elsif @videos.count == 1 %>
-	<div class="centerofpage" style="width:400px;top:235px;">
+	<div class="centerofpage scrollable" style="width:400px;top:235px; overflow:hidden;height:500px">
 
+		<div style="position:absolute;height:650px">
 		<p style="text-align:left;font-weight:bold">
 			<%= @videos.first.name %>'s Videos
 		</p>
@@ -121,7 +118,7 @@
 		</div>
 
 		<div class="fb-like" data-href="<%= @videos.first.shareurl%>" data-layout="button" data-action="like" data-show-faces="true" data-share="true" data-count="none" style="top: -35px!important;margin-left: 140px;"></div>
-
+		</div>
 		<script>
 		var thevideo = '<%= @videos.first.url %>';
 			jwplayer("myElement").setup({
@@ -135,7 +132,7 @@
 		</script>
 	</div>
 <% else %> 
-	<div class="centerofpage" style="width:400px;top:235px;text-align: center;">
+	<div class="centerofpage" style="width:400px;top:145px;text-align: center;">
 		<p style="text-align:center;font-family:'jam_fontregular';font-size:41px;color:white;margin-top:153px">
 			SORRY!
 		</p>
