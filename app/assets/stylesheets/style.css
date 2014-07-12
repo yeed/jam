@@ -196,11 +196,3 @@ html, body {height: 100%;}
     background-color: Black;
     clear:both;} 
 
-/*Opera Fix*/
-body:before {
-    content:"";
-    height:100%;
-    float:left;
-    width:0;
-    margin-top:-32767px;/
-}
