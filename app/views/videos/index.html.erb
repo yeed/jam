@@ -34,7 +34,6 @@
 						<div id="fb-root"></div>
 						<div id="<%= video.id %>" class="fb-like" data-href="<%= video.shareurl%>" data-layout="button" data-action="like" data-ref="test" data-show-faces="true" data-share="true" data-count="none"></div>
 
-
 						<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-count="none" data-url="<%= video.shareurl%>">Tweet</a>					
 					
 					</div>
@@ -45,8 +44,6 @@
 				
 				function SetIframe(x)
 				{
-
-
 					$("[id*='clone']").remove();
 
 					var split = x.split('áá');
@@ -70,7 +67,6 @@
 				    clone.style.marginTop = "62px";
 
 			    	$('.videopopup').append(clone);
-
 				}
 
 				function close_popup()
@@ -102,7 +98,6 @@
 			</div>
 		</div>
 	</div>
-	
 
 <% elsif @videos.count == 1 %>
 	<div class="centerofpage scrollable" style="width:400px;top:235px; overflow:hidden;height:500px">

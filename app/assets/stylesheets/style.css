@@ -66,11 +66,11 @@ video {cursor:url('bigcursor.gif') 60 0, auto;}
 {padding-top:4px}
 .videoholder
 {margin-left:15px;padding-left:10px}
-.socialmedia{float:right;margin-right:337px;width:267px;height:38px;margin-right:370px;margin-top:56px;}
+.socialmedia{float:right;width:267px;height:38px;margin-right:370px;margin-top:120px;}
 .sliderholder
 {background-image: url('groove.png'); background-repeat: no-repeat;width:267px;height:70px;float:right;margin-right:300px;margin-top:5px;}
 .sliderholderright
-{background-image: url('groove_right.png'); background-repeat: no-repeat;width:267px;height:70px;float:left;margin-left:303px;margin-top:15px;}
+{background-image: url('groove_right.png'); background-repeat: no-repeat;width:267px;height:70px;float:left;margin-left:303px;margin-top:4px;}
 #fbpopup .fancybox-skin 
 {background-color: White!important;border-radius:0px!important;}
 #howtowin .fancybox-skin 

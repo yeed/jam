@@ -1,9 +1,7 @@
-
 <div class="centerofpage" style="width:200px;top:412px;overflow:hidden">
 
     <%= image_tag "or.png" %>
     <%= @video %>
-
 
     <a href="#data" class="fancybox" id="jasonlink" style="display:none"></a>
 
@@ -30,7 +28,6 @@
             <%= link_to("/auth/facebook", :id => "sign_in") do %>
                 <%= image_tag "fblike.png", :style => "margin-left: 188px;margin-top: 100px;position:absolute" %>
             <% end %>
-
             
             <p style="margin-left: 133px;margin-top: 203px;position: absolute;">Make your selection count by liking Jam Audio.</p>
         </div>
@@ -41,33 +38,22 @@
 <% content_for :left_side do %>
     
     <div class="socialmedia" style="position:relative;">
-        
         <a href="http://www.facebook.com/jamspeaker"><%= image_tag "transparent.gif", :class => "facebook" %></a>
         <a href="http://www.twitter.com/jamspeaker"><%= image_tag "transparent.gif", :class => "twitter" %></a>
         <a href="http://instagram.com/JamAudio"><%= image_tag "transparent.gif", :class => "instagram" %></a>
     </div>
 
-    <% if current_user %>
     <div class="sliderholder" style="position:relative">
         <%= image_tag "slidepick.png", :id => "viewcontrol", :style=>"position:relative" %>
     </div>
 
     <div style="width: 75px;height: 54px;background-color: transparent;position: relative;margin-right: 304px;float: right;margin-top: -63px;;cursor:pointer" onclick="ViewAll()"> </div>
 
-    <% else %>
-        <div style="margin-top: 167px;"></div>
-    <% end %>
-
-
-   
-
 <% end %>
 
 <% content_for :right_side do %>
 
-    
 <% end %>
-
 
 <div id="scroller" class="centerofpage scrollable" style="top:239px;overflow:hidden;height:521px;width: 995px;">
     <div class="fltleft" style="overflow:hidden;margin-left:50px;height:700px">
@@ -98,18 +84,10 @@
         </div>
 
         <div id="right_button_div" class="youpassbtn" style="" onclick="formSubmit(<%= @secondvideo.id %>)"></div>   
-
-
     </div>
+</div>
 
-
-    </div>
-    </div>
-
-
-
-
-<img src="https://ad.amgdgt.com/ads/?t=ap&px=41949&rnd=<%= @timestamp%>" width="1" height="1" border="0"/>
+<img src="https://ad.amgdgt.com/ads/?t=ap&px=41949&rnd=<%= @timestamp %>" width="1" height="1" border="0"/>
 
 <form id="whopass" accept-charset="UTF-8" action="/home/index" method="post" style="display:none">
     <input type="text" id="winner" name="winner" value="" />
@@ -126,6 +104,7 @@
     $(document).ready(function() {
 
         $('.scrollable').perfectScrollbar();
+        
         jwplayer("video_left").setup({
                 file: firstvideourl,
                 image: firstvideoimage,
@@ -136,8 +115,6 @@
                 repeat: true,
                 mute: true,
             });
-
-        
 
         jwplayer("video_right").setup({
                 file: secondvideourl,
@@ -152,43 +129,47 @@
 
         $("a.fancybox3").fancybox({ 
             afterClose: function() {
-                jwplayer('video_left').play();
-                jwplayer('video_right').play(); 
 
+                if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+            
+                }
+                else{
+                    jwplayer('video_left').play();
+                    jwplayer('video_right').play(); 
+                }
             }
         });
 
-
         $("a.fancybox2").fancybox({
-        tpl: {
-          closeBtn: '<div title="Close" id="fb_close_button"></div>'
-         }
+            tpl: {
+              closeBtn: '<div title="Close" id="fb_close_button"></div>'
+             }
         });
 
-        $( "#viewcontrol" ).draggable(
-            { 
-                axis: "x", 
-                grid: [ 200, 0 ], 
-                containment: "parent",
-                stop: function() 
-                {
-                    var position = $('#viewcontrol').css('left');
-                    
-                    if (position == "100px")
-                        location = "videos";
-                }
-            });
-
+        $( "#viewcontrol" ).draggable({ 
+            axis: "x", 
+            grid: [ 200, 0 ], 
+            containment: "parent",
+            stop: function() 
+            {
+                var position = $('#viewcontrol').css('left');
+                
+                if (position == "100px")
+                    location = "videos";
+            }
+        });
         $('#viewcontrol').css('left', '-100px');
+
 
 
     });
 
+            
 
-
-
-    if (!test)
+    if ($.cookie('state') != 'shown')
     {
+        $.cookie('state', 'shown');
+
         $(document).ready(function() {
             document.getElementById('howtoenter').click();
         });
@@ -196,42 +177,26 @@
     else
     {
         $(window).bind("load", function() {
-            jwplayer('video_left').play();
-            jwplayer('video_right').play(); 
+
+            if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+            
+            }
+            else
+            {
+                jwplayer('video_left').play();
+                jwplayer('video_right').play(); 
+            }
         });
     }
-        
-
-        
-
     
-        
-
-    
-    
-
-    
-
     function formSubmit(x)
     {
-        if (test)
-        {
-            $('#winner').val(x);
-            document.getElementById("whopass").submit();
-        }
-        else
-        {
-            document.getElementById('fbpopup_click').click();
-        }
+        $('#winner').val(x);
+        document.getElementById("whopass").submit();
     }
 
     function ViewAll()
     {
         location = "videos";
     }
-
-
-
-
-
 </script>
