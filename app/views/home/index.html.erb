@@ -106,7 +106,7 @@
         $('.scrollable').perfectScrollbar();
 
         jwplayer("video_left").setup({
-                file: firstvideourl,
+                file: firstvideourl.replace("http", "https"),
                 image: firstvideoimage,
                 primary: "flash",
                 width: 267,
@@ -117,7 +117,7 @@
             });
 
         jwplayer("video_right").setup({
-                file: secondvideourl,
+                file: secondvideourl.replace("http", "https"),
                 image: secondvideoimage,
                 primary: "flash",
                 width: 267,
