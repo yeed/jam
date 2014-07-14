@@ -51,7 +51,14 @@
 					jwplayer("myElement").load([{file:split[0]}]);
 
 					$('.videopopup').css('display', 'block');
+					$('.videopopup').css('height', '438px');
+				    $('.videopopup').css('width', '360px');
+				    $('.videopopup').css('top', '');
+				    $('.videopopup').css('left', '');
 				    $('#close_btn').css('display', 'block');
+				    $('#myElement').css('height', '320px');
+
+
 
 					jwplayer("myElement").play();
 
@@ -71,8 +78,13 @@
 
 				function close_popup()
 				{
-					$('.videopopup').css('display', 'none');
+					$('#myElement').css('height', '0px');
 				    $('#close_btn').css('display', 'none');
+				    $('.videopopup').css('height', '1px');
+				    $('.videopopup').css('width', '1px');
+				    $('.videopopup').css('top', '-9999px');
+				    $('.videopopup').css('left', '-9999px');
+
 				    jwplayer("myElement").stop();
 				}
 				
