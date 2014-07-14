@@ -48,7 +48,9 @@
 
 					var split = x.split('áá');
 
-					jwplayer("myElement").load([{file:split[0]}]);
+					var res = split[0].replace("http", "https");
+
+					jwplayer("myElement").load([{file:res}]);
 
 					$('.videopopup').css('display', 'block');
 					$('.videopopup').css('height', '438px');
