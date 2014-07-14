@@ -149,7 +149,7 @@
 			<%= image_tag "slidepick.png", :id => "viewcontrol", :style=>"position:relative"%>
 		</div>
 
-		<div style="width: 75px;height: 54px;background-color: transparent;position: relative;margin-right: 485px;float: right;margin-top: -63px;cursor:pointer" onclick="Danceoff()"> </div>
+		<div id="videopageleftslider" style="width: 75px;height: 54px;background-color: transparent;position: relative;margin-right: 485px;float: right;margin-top: -63px;cursor:pointer" onclick="Danceoff()"> </div>
 
 		<% if request.original_url.include? "search" %>
 			<div style="width: 75px;height: 54px;background-color: transparent;position: relative;margin-right: 310px;float: right;margin-top: -63px;cursor:pointer" onclick="ViewAll()"> </div>
@@ -217,9 +217,9 @@
 	</div>
 
 	<% if request.original_url.include? "pop" %>
-	<div style="width: 75px;height: 54px;background-color: transparent;position: absolute;margin-left: 310px;float: left;margin-top: 114px;cursor:pointer" onclick="MostRecent()"> </div>
+	<div id="videopagerightsliderrecent" style="width: 75px;height: 54px;background-color: transparent;position: absolute;margin-left: 310px;float: left;margin-top: 114px;cursor:pointer" onclick="MostRecent()"> </div>
 	<% else %>
-	<div style="width: 75px;height: 54px;background-color: transparent;position: absolute;margin-left: 485px;float: left;margin-top: 114px;cursor:pointer" onclick="MostPopular()"> </div>
+	<div id="videopagerightslider" style="width: 75px;height: 54px;background-color: transparent;position: absolute;margin-left: 485px;float: left;margin-top: 114px;cursor:pointer" onclick="MostPopular()"> </div>
 	<% end %>
 
 	<script type="text/javascript">
