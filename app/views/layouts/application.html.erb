@@ -8,17 +8,16 @@
 	  <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
 	  <script src="http://jwpsrv.com/library/_vd5GAa9EeSoUiIACtqXBA.js"></script>
 	</head>
-	<body style="overflow:hidden">
+	<body>
 
 		<!--[if IE]>
 			<style>
 			</style>
 	  	<![endif]-->
 	  	
-		<div id="wrap" class="bgcolor<%= @rightsidebgcolor %>">
-
-		<div id="main">
-			<div id="background" class="bgcolor<%= @leftsidebgcolor %>"></div>
+		<div class="bgcolor<%= @rightsidebgcolor %>" style="height: 800px">
+ 		<div id="background" class="bgcolor<%= @leftsidebgcolor %>"></div>
+		<div class="container">
 			<div class="centerofpage" style="width:487px">
 				
 				<div id="howtowin" style="display:none">
@@ -52,16 +51,16 @@
 				</div>
 
 				<%= link_to image_tag('logo.png'), url_for({:controller => 'home', :action => 'index'}) %>
-				<canvas id="myCanvas" width="300" height="1100" style="margin-left:134px;margin-top: 1px;position:relative"></canvas>
+				<canvas id="myCanvas" width="300" height="562" style="margin-left:204px;margin-top: 1px;"></canvas>
 			</div>
 
 			<%= yield %>
 
-			<div class="content bgcolor<%= @leftsidebgcolor %> fltleft" style="margin-top: -94px;">
+			<div class="content bgcolor<%= @leftsidebgcolor %> fltleft">
 				<%= yield :left_side %>
 			</div>
 
-			<div class="content bgcolor<%= @rightsidebgcolor %> fltright">
+			<div id="rightcontent" class="content bgcolor<%= @rightsidebgcolor %> fltright">
 				<%= yield :right_side %>
 			</div>
 		</div>
@@ -69,7 +68,7 @@
 
 		<div style="clear:both"></div>
 
-		<div id="footer">
+		<div class="footer">
 			<div class="footercontainer">
 				<% if @videos != nil %>
 				<% if @videos.count > 8 %>
@@ -108,10 +107,10 @@
 				var c=document.getElementById("myCanvas");
 				var ctx=c.getContext("2d");
 				ctx.beginPath();
-				ctx.moveTo(110,0);
-				ctx.lineTo(0,1100);
-				ctx.lineTo(110,1100);
-				ctx.lineTo(110,0);
+				ctx.moveTo(40,0);
+ 				ctx.lineTo(0,590);
+ 				ctx.lineTo(40,590);
+ 				ctx.lineTo(40,0);
 				ctx.strokeStyle = colorOfrightside;
 				ctx.stroke();
 				ctx.fillStyle= colorOfrightside;
@@ -120,7 +119,7 @@
 
 			if (navigator.userAgent.indexOf('Firefox') != -1 && parseFloat(navigator.userAgent.substring(navigator.userAgent.indexOf('Firefox') + 8)) >= 3.6)
 			{
-				$('#myCanvas').css('margin-top', '-1px')
+				$('#myCanvas').css('margin-top', '1px')
 			}
 			else if (navigator.userAgent.indexOf('Chrome') != -1 && parseFloat(navigator.userAgent.substring(navigator.userAgent.indexOf('Chrome') + 7).split(' ')[0]) >= 15)
 			{//Chrome
