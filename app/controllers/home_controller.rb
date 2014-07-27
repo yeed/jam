@@ -15,12 +15,14 @@ class HomeController < ApplicationController
 	end
 
 	def index
+		
+		InitInstagramVideos()
+		InitVineVideos()
+		
 		require 'date'
 		
 		@timestamp = DateTime.now.strftime('%Q')
 
-		InitInstagramVideos()
-		InitVineVideos()
 
 		@leftsidebgcolor = "blue"
 		@rightsidebgcolor = "pink"

@@ -1,4 +1,4 @@
-<div class="centerofpage" style="width:200px;top:412px;">
+<div class="centerofpage" style="width:200px;top:295px;">
 
     <%= image_tag "or.png" %>
     <%= @video %>
@@ -37,30 +37,28 @@
 
 <% content_for :left_side do %>
     
-    <div class="socialmedia">
-        <a href="http://www.facebook.com/jamspeaker"><%= image_tag "transparent.gif", :class => "facebook" %></a>
-        <a href="http://www.twitter.com/jamspeaker"><%= image_tag "transparent.gif", :class => "twitter" %></a>
-        <a href="http://instagram.com/JamAudio"><%= image_tag "transparent.gif", :class => "instagram" %></a>
+    <div class="sliderholder" style="position:relative; margin-top:15px">
+        <%= image_tag "slidepick.png", :id => "viewcontrol", :style=>"position:relative", :class=>"slidepick" %>
+        <div style="width: 75px;height: 54px;background-color: transparent;position: absolute;float: right;margin-top: -34px;cursor: pointer;margin-left: 133px;" onclick="ViewAll()"> </div>
     </div>
 
-    <div class="sliderholder" style="position:relative">
-        <%= image_tag "slidepick.png", :id => "viewcontrol", :style=>"position:relative" %>
-    </div>
+<% end %>
 
-    <div style="width: 75px;height: 54px;background-color: transparent;position: relative;margin-right: 304px;float: right;margin-top: -63px;;cursor:pointer" onclick="ViewAll()"> </div>
+<% content_for :right_side do %>
+
+    <%= image_tag "toprightbanner.png", :style => "float:right;z-index: 3;position: relative;margin-top:41px" %>
 
 <% end %>
 
 
-
-<div id="scroller" class="centerofpage scrollable" style="top:239px;overflow:hidden;height:521px;width: 995px;">
-    <div class="fltleft" style="overflow:hidden;margin-left:50px;height:700px">
+<div id="scroller" class="centerofpage" style="top:159px;">
+    <div class="fltleft" style="margin-left:30px;height:700px">
         <p style="text-align:left;font-weight:bold;position:relative">
             <%= @firstvideo.name %>
         </p>
         <div class="videoframe bgcolororange shadowblue " style="position:relative">
 
-            <div style="margin-left:20px;padding-top:20px" onmouseover="jwplayer('video_left').setMute(false);" onmouseout="jwplayer('video_left').setMute(true);">
+            <div style="margin-left:15px;padding-top:15px" onmouseover="jwplayer('video_left').setMute(false);" onmouseout="jwplayer('video_left').setMute(true);">
                 <div id="video_left"></div> 
             </div>
 
@@ -75,7 +73,7 @@
 
         <div class="videoframe bgcolororange shadowpink" >
 
-            <div style="margin-left:20px;padding-top:20px" onmouseover="jwplayer('video_right').setMute(false);" onmouseout="jwplayer('video_right').setMute(true);">
+            <div style="margin-left:15px;padding-top:15px" onmouseover="jwplayer('video_right').setMute(false);" onmouseout="jwplayer('video_right').setMute(true);">
                 <div id="video_right"></div> 
             </div>
 
@@ -104,14 +102,12 @@
 
     $(document).ready(function() {
 
-        $('#rightcontent').remove();
-        
         jwplayer("video_left").setup({
                 file: firstvideourl.replace("http", "https"),
                 image: firstvideoimage,
                 primary: "flash",
-                width: 267,
-                height: 267,
+                width: 277,
+                height: 277,
                 autostart: false,
                 repeat: true,
                 mute: true,
@@ -121,8 +117,8 @@
                 file: secondvideourl.replace("http", "https"),
                 image: secondvideoimage,
                 primary: "flash",
-                width: 267,
-                height: 267,
+                width: 277,
+                height: 277,
                 autostart: false,
                 repeat: true,
                 mute: true,
@@ -149,17 +145,17 @@
 
         $( "#viewcontrol" ).draggable({ 
             axis: "x", 
-            grid: [ 200, 0 ], 
+            grid: [ 162, 0 ], 
             containment: "parent",
             stop: function() 
             {
                 var position = $('#viewcontrol').css('left');
                 
-                if (position == "100px")
+                if (position == "80px")
                     location = "videos";
             }
         });
-        $('#viewcontrol').css('left', '-100px');
+        $('#viewcontrol').css('left', '-82px');
 
 
 

@@ -11,7 +11,7 @@
 		</div>	
 	</div>
 
-	<div class="centerofpage scrollable" style="top:239px;overflow:hidden;height:521px">
+	<div class="centerofpage scrollable" style="top:207px;overflow:hidden;height:437px">
 			
 		<div style="width:855px; margin:auto">
 
@@ -113,10 +113,10 @@
 	</div>
 
 <% elsif @videos.count == 1 %>
-	<div class="centerofpage scrollable" style="width:400px;top:235px; overflow:hidden;height:500px">
+	<div class="centerofpage scrollable" style="width:400px;top:166px; overflow:hidden;height:500px">
 
 		<div style="position:absolute;height:650px">
-		<p style="text-align:left;font-weight:bold">
+		<p style="text-align:left;font-weight:bold;margin-bottom: 4px;margin-top: 34px;">
 			<%= @videos.first.name %>'s Videos
 		</p>
 		<div class="videoframe_big bgcolorgreen shadow" style="height: 418px;">
@@ -157,15 +157,15 @@
 		    	
 <% content_for :left_side do %>
 
-	<div class="sliderholder" style="margin-top: 102px;">
-		<%= image_tag "slidepick.png", :id => "viewcontrol"%>
-	</div>
+	<div class="sliderholder" style="position:relative; margin-top:15px">
+        <%= image_tag "slidepick.png", :id => "viewcontrolleft", :style=>"position:relative", :class=>"slidepick" %>
+        
+		<% unless request.original_url.include? "search" %>
+			<div style="width: 75px;height: 54px;background-color: transparent;position: absolute;float: right;margin-top: -34px;cursor:pointer" onclick="Danceoff()"> </div>
+		<% end %>
 
-	<div id="videopageleftslider" style="width: 75px;height: 54px;background-color: transparent;position: relative;margin-right: 485px;float: right;margin-top: -63px;cursor:pointer" onclick="Danceoff()"> </div>
+    </div>
 
-	<% if request.original_url.include? "search" %>
-		<div style="width: 75px;height: 54px;background-color: transparent;position: relative;margin-right: 310px;float: right;margin-top: -63px;cursor:pointer" onclick="ViewAll()"> </div>
-	<% end %>
 
 	<script type="text/javascript">
 
@@ -179,35 +179,38 @@
 			location = "videos";
 		}
 
-		var temp = [200,0];
+		$(document).ready(function() {
 
-		if (window.location.href.indexOf("search") > -1)
-		{
-			$('#viewcontrol').css('left', '0px')
-			temp = [100,0]
-			$('.sliderholderright').css('display', 'none')
-		}
-		else
-			$('#viewcontrol').css('left', '100px')
+			var temp = [160,0];
+
+			if (window.location.href.indexOf("search") > -1)
+			{
+				$('#viewcontrolleft').css('left', '0px');
+				temp = [80,0];
+				$('.sliderholderright').css('display', 'none');
+			}
+			else
+				$('#viewcontrolleft').css('left', '80px');
 
 
-		$(function() {
-		    $( "#viewcontrol" ).draggable(
+			
+		    $( "#viewcontrolleft" ).draggable(
 		    	{ 
 		    		axis: "x", 
 		    		grid: temp, 
 		    		containment: "parent",
 		    		stop: function() 
 		    		{
-		    			var position = $('#viewcontrol').css('left');
+		    			var position = $('#viewcontrolleft').css('left');
 				        
-				        if (position == "-100px")
+				        if (position == "-80px")
 				        	location = "./";
 
-				        if (position == "100px")
+				        if (position == "80px")
 				        	location = "./videos";
 			      	}
 		    	});
+
 		});
 
 		
@@ -219,65 +222,57 @@
 
 <% content_for :right_side do %>
 	
-	<div class="searchbox">
-		<input type="text" id="s_box" value="<%= @searchparam %>"/>
-		<div class="gobutton" onclick="Go()"></div>
-	</div>
-	
-	<div class="sliderholderright">
-		<%= image_tag "slidepick.png", :id => "videocontrol" %>
+	<div class="sliderholderright" style="margin-top:114px">
+		<%= image_tag "slidepick.png", :id => "viewcontrolright", :style=>"position:relative", :class=>"slidepick" %>
+
+		<% if request.original_url.include? "pop" %>
+			<div id="videopagerightsliderrecent" style="width: 75px;height: 54px;background-color: transparent;position: absolute;float: left;margin-top: -38px;cursor:pointer" onclick="MostRecent()"> </div>
+		<% else %>
+			<div id="videopagerightslider" style="width: 75px;height: 54px;background-color: transparent;position: absolute;margin-left:134px;float: left;margin-top:-38px;cursor:pointer" onclick="MostPopular()"> </div>
+		<% end %>
 	</div>
 
-	<% if request.original_url.include? "pop" %>
-	<div id="videopagerightsliderrecent" style="width: 75px;height: 54px;background-color: transparent;position: absolute;margin-left: 310px;float: left;margin-top: 114px;cursor:pointer" onclick="MostRecent()"> </div>
-	<% else %>
-	<div id="videopagerightslider" style="width: 75px;height: 54px;background-color: transparent;position: absolute;margin-left: 485px;float: left;margin-top: 114px;cursor:pointer" onclick="MostPopular()"> </div>
-	<% end %>
+	
 
 	<script type="text/javascript">
 
 		function MostRecent()
 		{
-			location = "./videos"
+			location = "./videos";
 		}
 
 		function MostPopular()
 		{
-			location = "?pop"
+			location = "?pop";
 		}
 
-		$(function() {
-		    $( "#videocontrol" ).draggable(
-		    	{ 
-		    		axis: "x", 
-		    		grid: [ 200, 0 ], 
-		    		containment: "parent",
-		    		stop: function() 
-		    		{
-		    			var position = $('#videocontrol').css('left');
+		$(document).ready(function() {
 
-		    			if(position != "-100px")
-		    				location = "?pop"
-		    			else
-		    				location = "./videos"
+		    $( "#viewcontrolright" ).draggable({ 
+	    		axis: "x", 
+	    		grid: [ 160, 0 ], 
+	    		containment: "parent",
+	    		stop: function() 
+	    		{
+	    			var position = $('#viewcontrolright').css('left');
 
-			      	}
-		    	});
+	    			if(position != "-80px")
+	    				location = "?pop";
+	    			else
+	    				location = "./videos";
+	      		}
+	    	});
+
+
+			$('#viewcontrolright').css('left', '-80px');
+
+			if (location.href.indexOf("pop") > -1)
+				$('#viewcontrolright').css('left', '80px');
+
+			if (window.location.href.indexOf("search") > -1)
+				$('.sliderholderright').css('display', 'none');
+
 		});
-
-		function Go()
-		{
-			location = "./videos?search=" + $('#s_box').val()
-		}
-
-		$('#videocontrol').css('top', '6px')
-		$('#videocontrol').css('left', '-100px')
-
-		if (location.href.indexOf("pop") > -1)
-			$('#videocontrol').css('left', '100px')
-
-		if (window.location.href.indexOf("search") > -1)
-			$('.sliderholderright').css('display', 'none')
 
 	</script>
 

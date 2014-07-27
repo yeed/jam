@@ -1,14 +1,14 @@
 html, body 
-{margin:0px;font-family: 'TradeGothic';background-color:black}
+{margin:0px;font-family: 'TradeGothic';background-color:black;}
 img {text-decoration: none; border: 0px}
 .container
-{position:relative;width:1145px;margin:auto;}
+{position:relative;width:960px;margin:auto;}
 .footer
 {height:150px; background-color:Black;position:relative}
 .footercontainer
-{width: 995px;;margin: auto;padding-top: 19px;text-align: center;}
+{width: 960px;;margin: auto;padding-top: 19px;text-align: center;}
 .content
-{width:50%;  height:800px; text-align: center}
+{width:50%;  height:650px; text-align: center}
 .fltleft
 {float:left;}
 .fltright
@@ -54,45 +54,38 @@ img {text-decoration: none; border: 0px}
 .centerofpage
 {position:absolute; margin-left: auto;margin-right: auto;left: 0;right: 0;}
 .youpassbtn
-{width: 255px;height: 74px;margin-top: 47px;margin-left: 32px;cursor:url('bigcursor.gif') 60 0, auto;}
+{width: 216px;height: 62px;margin-top: 37px;margin-left: 52px;cursor:url('bigcursor.gif') 60 0, auto;}
 video {cursor:url('bigcursor.gif') 60 0, auto;}
 .shopbtn
 {float:left;width:215px;cursor:pointer;}
 .facebookbtn
-{float:right;width:215px;cursor:pointer;}
+{float:left;width:215px;cursor:pointer;margin-left: 117px;margin-top: 4px;}
 .smallvideoframe
 {width:188px; height:241px; text-align:center;float:left;margin-bottom:15px}
 .smallvideoframe img
 {padding-top:4px}
 .videoholder
 {margin-left:15px;padding-left:10px}
-.socialmedia{float:right;width:267px;height:38px;margin-right:370px;margin-top:28px;}
+.socialmedia
+{float:right;height:38px;margin-top:10px;}
 .sliderholder
-{background-image: url('groove.png'); background-repeat: no-repeat;width:267px;height:70px;float:right;margin-right:300px;margin-top:5px;}
+{background-image: url('groove.png'); background-repeat: no-repeat;width:209px;height:47px;float:left;}
+.slidepick
+{margin-top:-6px;}
 .sliderholderright
-{background-image: url('groove_right.png'); background-repeat: no-repeat;width:267px;height:70px;float:left;margin-left:303px;margin-top:4px;}
+{background-image: url('groove_right.png'); background-repeat: no-repeat;width:209px;height:47px;float:right;margin-top:4px;}
 #fbpopup .fancybox-skin 
 {background-color: White!important;border-radius:0px!important;}
 #howtowin .fancybox-skin 
 {background-color: White!important;border-radius:0px!important;}
 .videopopup .fancybox-skin 
 {background-color: #4ff28c!important;border-radius:0px!important;}
-@font-face {
-    font-family: 'jam_fontregular';
-    src: url('jamfont-webfont.eot');
-    src: url('jamfont-webfont.eot?#iefix') format('embedded-opentype'),
-         url('jamfont-webfont.woff') format('woff'),
-         url('jamfont-webfont.ttf') format('truetype'),
-         url('jamfont-webfont.svg#jam_fontregular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
 .searchbox
 {float: left;margin-left: 309px;margin-top: 40px;}
 .searchbox input[type="text"]
-{background-image: url('pinksearchbox.png'); background-repeat: no-repeat;background-color: transparent;border: none;height: 40px;width: 168px; color:#db438f;padding-left:20px;float:left;outline:none;}
+{background-image: url('pinksearchbox.png');background-repeat: no-repeat;background-color: transparent;border: none;height: 30px;width: 146px;padding-left: 14px;float: left;outline: none;}
 .gobutton
-{background-image: url('go.png'); background-repeat: no-repeat;width:60px;height:47px;float: left;margin-left: 14px;cursor:pointer;}
+{background-image: url('go.png'); background-repeat: no-repeat;width:46px;height:36px;float: left;margin-left: 2px;cursor:pointer;}
 .centerofpage::-webkit-scrollbar 
 {display: none;}
 .centerofpage::-moz-scrollbar 
@@ -106,77 +99,39 @@ video {cursor:url('bigcursor.gif') 60 0, auto;}
 .smallvideoframe p 
 {margin-top:1px;margin-bottom:2px;}
 @font-face{font-family: 'TradeGothic';src: url('TradeGothic.otf') format('opentype');font-weight: normal;font-style: normal;}
-.scrollable{overflow: hidden; overflow-x: hidden; overflow-y: hidden;}
-.fb-like {float:left;margin-left: 8px;margin-top: 3px;}
-.twitter-share-button { float:left;margin-left: 5px;margin-top: 3px;}
-.fancybox-skin {background: transparent;box-shadow: none !important;}
-.fancybox-close{background-image: url('fancybox_sprite.png')!important;top: 30px;right: 129px;}
-.fb_edge_widget_with_comment span.fb_edge_comment_widget iframe.fb_ltr {
-    display: none !important;
-}
-img.facebook {
-    width: 29px;
-    height: 29px;
-    background: url('socialmedia.png') 0 0;
-
-}
-
-img.instagram {
-    width: 29px;
-    height: 29px;
-    background: url('socialmedia.png') 30px 0;
-    margin-left:10px;
-}
-
-img.twitter {
-    width: 29px;
-    height: 29px;
-    background: url('socialmedia.png') 68px 0;
-    margin-left:10px;
-}
-.popupheader{font-family:'jam_fontregular';color:#f2944f;font-size:24px;color:#f2944f;text-align:center;}
-
-.push 
-{
-    height: 155px;
-}
-
-#background {
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    width: 50%;
-    height: 800px;
-}
-
+.scrollable
+{overflow: hidden; overflow-x: hidden; overflow-y: hidden;}
+.fb-like 
+{float:left;margin-left: 8px;margin-top: 3px;}
+.twitter-share-button 
+{float:left;margin-left: 5px;margin-top: 3px;}
+.fancybox-skin 
+{background: transparent;box-shadow: none !important;}
+.fancybox-close
+{background-image: url('fancybox_sprite.png')!important;top: 30px;right: 129px;}
+.fb_edge_widget_with_comment span.fb_edge_comment_widget iframe.fb_ltr 
+{display: none !important;}
+img.facebook 
+{width: 29px;height: 29px;background: url('socialmedia.png') 0 0;}
+img.instagram 
+{width: 29px;height: 29px;background: url('socialmedia.png') 30px 0;margin-left:10px;}
+img.twitter
+{width: 29px;height: 29px;background: url('socialmedia.png') 68px 0;margin-left:10px;}
+.popupheader
+{font-family:'jam_fontregular';color:#f2944f;font-size:24px;color:#f2944f;text-align:center;}
+.push
+{height: 155px;}
+#background
+{position: fixed;top: 0px;left: 0px;width: 50%;height: 650px;}
 #right_button_div
-{
-    background-image:url('sweet_up.png');
-    background-repeat: no-repeat;
-}
-#right_button_div:active {
-    background-image:url('sweet_down.png');
-    background-repeat: no-repeat;
-}
-
+{background-image:url('sweet_up.png');background-repeat: no-repeat;}
+#right_button_div:active 
+{background-image:url('sweet_down.png');background-repeat: no-repeat;}
 #left_button_div
-{
-    background-image:url('sweet_up.png');
-    background-repeat: no-repeat;
-}
-#left_button_div:active {
-    background-image:url('sweet_down.png');
-    background-repeat: no-repeat;
-}
-#fb_close_button
-{
-    background-image: url('close_btn_black.png');
-    position: absolute;
-    width: 30px;
-    height: 31px;
-    margin-top: -326px;
-    margin-left: 478px;
-    cursor: pointer;
-}
-
-
+{background-image:url('sweet_up.png');background-repeat: no-repeat;}
+#left_button_div:active 
+{background-image:url('sweet_down.png');background-repeat: no-repeat;}
+#fb_close_button 
+{background-image: url('close_btn_black.png');position: absolute;width: 30px;height: 31px;margin-top: -326px;margin-left: 478px;cursor: pointer;}
+@font-face{font-family: 'jam_fontregular';src: url('jamfont-webfont.eot');src: url('jamfont-webfont.eot?#iefix') format('embedded-opentype'),url('jamfont-webfont.woff') format('woff'),url('jamfont-webfont.ttf') format('truetype'),url('jamfont-webfont.svg#jam_fontregular') format('svg');font-weight: normal;font-style: normal;}
+#triangle{width: 0;height: 0;border-style: solid;border-width: 0 0 650px 40px;float:right;}

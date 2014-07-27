@@ -9,16 +9,10 @@
 	  <script src="http://jwpsrv.com/library/_vd5GAa9EeSoUiIACtqXBA.js"></script>
 	</head>
 	<body>
-
-		<!--[if IE]>
-			<style>
-			</style>
-	  	<![endif]-->
-	  	
-		<div class="bgcolor<%= @rightsidebgcolor %>" style="height: 800px">
+		<div class="bgcolor<%= @rightsidebgcolor %>" style="height: 650px">
  		<div id="background" class="bgcolor<%= @leftsidebgcolor %>"></div>
 		<div class="container">
-			<div class="centerofpage" style="width:487px">
+			<div class="centerofpage" style="width:460px">
 				
 				<div id="howtowin" style="display:none">
 					<div id="data3" style="width:868px;height:546px">
@@ -51,16 +45,22 @@
 				</div>
 
 				<%= link_to image_tag('logo.png'), url_for({:controller => 'home', :action => 'index'}) %>
-				<canvas id="myCanvas" width="300" height="562" style="margin-left:204px;margin-top: 1px;"></canvas>
+				
 			</div>
 
 			<%= yield %>
 
 			<div class="content bgcolor<%= @leftsidebgcolor %> fltleft">
+				<div class="searchbox" style="margin-left:0px;margin-top:40px;width:273px;">
+			        <input type="text" id="s_box" value="<%= @searchparam %>"/>
+			        <div class="gobutton" onclick="Go()"></div>
+			    </div>
+
 				<%= yield :left_side %>
+				<div id="triangle" style="border-color: transparent transparent <%= @canvascolor %> transparent"></div>
 			</div>
 
-			<div id="rightcontent" class="content bgcolor<%= @rightsidebgcolor %> fltright">
+			<div id="rightcontent" class="content bgcolor<%= @rightsidebgcolor %> fltright" style="margin-top: -21px;">
 				<%= yield :right_side %>
 			</div>
 		</div>
@@ -72,92 +72,46 @@
 			<div class="footercontainer">
 				<% if @videos != nil %>
 				<% if @videos.count > 8 %>
-		<div class="centerofpage" style="margin-top:-59px;width:848px;font-family: 'jam_fontregular';font-size: 16px;color: yellow;text-align: center;">	
-			<p style="font-family:'jam_fontregular'">SCROLL TO LOAD MORE</p>
-		</div>
-		<% end %><% end %>
+			<div class="centerofpage" style="margin-top:-59px;width:848px;font-family: 'jam_fontregular';font-size: 16px;color: yellow;text-align: center;">	
+				<p style="font-family:'jam_fontregular'">SCROLL TO LOAD MORE</p>
+			</div>
+			<% end %><% end %>
 				<div class="shopbtn">
 					<a href="http://www.jamaudio.com/products?utm_source=Jam%20Contest%20Landing%20Page&utm_medium=contest&utm_campaign=BTS%20Contest" target="_blank">
 					<%= image_tag "shop_btn.png", :style => "margin-top: -38px;z-index: 3;position: relative;" %>
 					</a>
 				</div>
-				<%= image_tag "jam25kentry.png", :style => "margin:auto" %>
+				
 
 				<a id="howtoenter" class="fancybox3 facebookbtn" href="#data3">
 					<%= image_tag "facebookbtn.png" %>
 				</a>
 
-								
+			    <div class="socialmedia">
+			        <a href="http://www.facebook.com/jamspeaker"><%= image_tag "transparent.gif", :class => "facebook" %></a>
+			        <a href="http://www.twitter.com/jamspeaker"><%= image_tag "transparent.gif", :class => "twitter" %></a>
+			        <a href="http://instagram.com/JamAudio"><%= image_tag "transparent.gif", :class => "instagram" %></a>
+			    </div>			
 			</div>
 		</div>
 
 		<script>
 			
-			
 			var ua = window.navigator.userAgent;
             var msie = ua.indexOf("MSIE ");
 
-            if (msie > 0)
+            function Go()
 			{
-
+				location = "./videos?search=" + $('#s_box').val()
 			}
-        	else
-        	{
-	    		var colorOfrightside = "<%= @canvascolor %>"; 
-				var c=document.getElementById("myCanvas");
-				var ctx=c.getContext("2d");
-				ctx.beginPath();
-				ctx.moveTo(40,0);
- 				ctx.lineTo(0,590);
- 				ctx.lineTo(40,590);
- 				ctx.lineTo(40,0);
-				ctx.strokeStyle = colorOfrightside;
-				ctx.stroke();
-				ctx.fillStyle= colorOfrightside;
-				ctx.fill();
-			}
+			
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-			if (navigator.userAgent.indexOf('Firefox') != -1 && parseFloat(navigator.userAgent.substring(navigator.userAgent.indexOf('Firefox') + 8)) >= 3.6)
-			{
-				$('#myCanvas').css('margin-top', '1px')
-			}
-			else if (navigator.userAgent.indexOf('Chrome') != -1 && parseFloat(navigator.userAgent.substring(navigator.userAgent.indexOf('Chrome') + 7).split(' ')[0]) >= 15)
-			{//Chrome
-			 //Allow
-			}
-			else if(navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Version') != -1 && parseFloat(navigator.userAgent.substring(navigator.userAgent.indexOf('Version') + 8).split(' ')[0]) >= 5)
-			{//Safari
-			 //Allow
-			}
-			else
-			{
-			 // Block
-			}
-
-			if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-				$('#myCanvas').css('display', 'none');
-				$('.sliderholder').css('margin-right', '227px');
-				$('.socialmedia').css('margin-right', '232px');
-				$('.sliderholderright').css('margin-left', '220px');
-				$('.searchbox').css('margin-left', '227px');
-				$('#s_box').css('width', '152px');
-				$('#videopageleftslider').css('margin-right', '425px');
-				$('#videopagerightslider').css('margin-left', '405px');
-				$('#videopagerightslider').css('margin-top', '104px');
-				$('#videopagerightsliderrecent').css('margin-left', '224px');
-			 	$('#videopagerightsliderrecent').css('margin-top', '104px');
-			}
-	  	
-
-			  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-			  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-			  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-			  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-			  ga('create', 'UA-52488278-1', 'auto');
-			  ga('send', 'pageview');
-
-
+			ga('create', 'UA-52488278-1', 'auto');
+			ga('send', 'pageview');
 
 		</script>
 	</body>
