@@ -158,7 +158,7 @@
 <% content_for :left_side do %>
 
 	<div class="sliderholder" style="position:relative; margin-top:15px">
-        <%= image_tag "slidepick.png", :id => "viewcontrolleft", :style=>"position:relative", :class=>"slidepick" %>
+        <%= image_tag "slidepick_v2.png", :id => "viewcontrolleft", :style=>"position:relative", :class=>"slidepick" %>
         
 		<% unless request.original_url.include? "search" %>
 			<div style="width: 75px;height: 54px;background-color: transparent;position: absolute;float: right;margin-top: -34px;cursor:pointer" onclick="Danceoff()"> </div>
@@ -223,7 +223,7 @@
 <% content_for :right_side do %>
 	
 	<div class="sliderholderright" style="margin-top:114px">
-		<%= image_tag "slidepick.png", :id => "viewcontrolright", :style=>"position:relative", :class=>"slidepick" %>
+		<%= image_tag "slidepick_v2.png", :id => "viewcontrolright", :style=>"position:relative", :class=>"slidepick" %>
 
 		<% if request.original_url.include? "pop" %>
 			<div id="videopagerightsliderrecent" style="width: 75px;height: 54px;background-color: transparent;position: absolute;float: left;margin-top: -38px;cursor:pointer" onclick="MostRecent()"> </div>

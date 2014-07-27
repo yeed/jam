@@ -69,11 +69,11 @@ video {cursor:url('bigcursor.gif') 60 0, auto;}
 .socialmedia
 {float:right;height:38px;margin-top:10px;}
 .sliderholder
-{background-image: url('groove.png'); background-repeat: no-repeat;width:209px;height:47px;float:left;}
+{background-image: url('groove_v2.png'); background-repeat: no-repeat;width:209px;height:47px;float:left;}
 .slidepick
 {margin-top:-6px;}
 .sliderholderright
-{background-image: url('groove_right.png'); background-repeat: no-repeat;width:209px;height:47px;float:right;margin-top:4px;}
+{background-image: url('groove_right_v2.png'); background-repeat: no-repeat;width:209px;height:47px;float:right;margin-top:4px;}
 #fbpopup .fancybox-skin 
 {background-color: White!important;border-radius:0px!important;}
 #howtowin .fancybox-skin 
@@ -83,7 +83,7 @@ video {cursor:url('bigcursor.gif') 60 0, auto;}
 .searchbox
 {float: left;margin-left: 309px;margin-top: 40px;}
 .searchbox input[type="text"]
-{background-image: url('pinksearchbox.png');background-repeat: no-repeat;background-color: transparent;border: none;height: 30px;width: 146px;padding-left: 14px;float: left;outline: none;}
+{background-image: url('searchbox_v2.png');background-repeat: no-repeat;background-color: transparent;border: none;height: 30px;width: 146px;padding-left: 14px;float: left;outline: none;}
 .gobutton
 {background-image: url('go.png'); background-repeat: no-repeat;width:46px;height:36px;float: left;margin-left: 2px;cursor:pointer;}
 .centerofpage::-webkit-scrollbar 
@@ -124,13 +124,13 @@ img.twitter
 #background
 {position: fixed;top: 0px;left: 0px;width: 50%;height: 650px;}
 #right_button_div
-{background-image:url('sweet_up.png');background-repeat: no-repeat;}
+{background-image:url('sweet_up_v2.png');background-repeat: no-repeat;}
 #right_button_div:active 
-{background-image:url('sweet_down.png');background-repeat: no-repeat;}
+{background-image:url('sweet_down_v2.png');background-repeat: no-repeat;}
 #left_button_div
-{background-image:url('sweet_up.png');background-repeat: no-repeat;}
+{background-image:url('sweet_up_v2.png');background-repeat: no-repeat;}
 #left_button_div:active 
-{background-image:url('sweet_down.png');background-repeat: no-repeat;}
+{background-image:url('sweet_down_v2.png');background-repeat: no-repeat;}
 #fb_close_button 
 {background-image: url('close_btn_black.png');position: absolute;width: 30px;height: 31px;margin-top: -326px;margin-left: 478px;cursor: pointer;}
 @font-face{font-family: 'jam_fontregular';src: url('jamfont-webfont.eot');src: url('jamfont-webfont.eot?#iefix') format('embedded-opentype'),url('jamfont-webfont.woff') format('woff'),url('jamfont-webfont.ttf') format('truetype'),url('jamfont-webfont.svg#jam_fontregular') format('svg');font-weight: normal;font-style: normal;}
