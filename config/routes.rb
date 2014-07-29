@@ -4,7 +4,6 @@ Jamdancedaddymovemomma::Application.routes.draw do
   match 'auth/failure', to: redirect('/')
   match 'signout', to: 'sessions#destroy', as: 'signout'
   
-  resources :admin
   resources :videos
   root :to => 'home#index'
 
