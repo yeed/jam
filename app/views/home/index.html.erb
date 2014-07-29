@@ -52,7 +52,7 @@
 
 
 <div id="scroller" class="centerofpage" style="top:159px;">
-    <div class="fltleft" style="margin-left:30px;height:700px">
+    <div class="fltleft" style="margin-left:30px;height:494px">
         <p style="text-align:left;font-weight:bold;position:relative">
             <%= @firstvideo.name %>
         </p>
@@ -163,28 +163,18 @@
 
             
 
-    if ($.cookie('state') != 'shown')
-    {
-        $.cookie('state', 'shown');
+    $(window).bind("load", function() {
 
-        $(document).ready(function() {
-            document.getElementById('howtoenter').click();
-        });
-    }
-    else
-    {
-        $(window).bind("load", function() {
-
-            if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-            
-            }
-            else
-            {
-                jwplayer('video_left').play();
-                jwplayer('video_right').play(); 
-            }
-        });
-    }
+        if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+        
+        }
+        else
+        {
+            jwplayer('video_left').play();
+            jwplayer('video_right').play(); 
+        }
+    });
+    
     
     function formSubmit(x)
     {
