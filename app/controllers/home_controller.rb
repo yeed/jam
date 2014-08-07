@@ -16,8 +16,10 @@ class HomeController < ApplicationController
 
 	def index
 		
-		InitInstagramVideos()
-		InitVineVideos()
+		redirect_to 'http://www.jamaudio.com/danceoff?'
+
+
+		
 		
 		require 'date'
 		

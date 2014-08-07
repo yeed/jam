@@ -1,5 +1,8 @@
 class VideosController < ApplicationController
 	def index
+		
+		redirect_to 'http://www.jamaudio.com/danceoff?'
+
 		@leftsidebgcolor = "orange"
 		@rightsidebgcolor = "pink"
 		@canvascolor = "#db438f"
